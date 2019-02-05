@@ -181,7 +181,7 @@ bool LOS::hasBattery(){
 
 //Battery Charge Level
 int LOS::batteryCharge(){ //Returns: percent charge (0-100), anything outside that range is counted as an error
-  QString my_status = LUtils::getCmdOutput("acpi -b").join("");
+  /*QString my_status = LUtils::getCmdOutput("acpi -b").join("");
   int my_start = my_status.indexOf("%");
   // get the number right before the % sign
   int my_end = my_start;
@@ -191,7 +191,8 @@ int LOS::batteryCharge(){ //Returns: percent charge (0-100), anything outside th
   my_start++;
   int my_charge = my_status.mid(my_start, my_end - my_start).toInt();
   if ( (my_charge < 0) || (my_charge > 100) ) return -1;
-  return my_charge;
+  return my_charge;*/
+    return 0;
 }
 
 //Battery Charging State
