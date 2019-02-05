@@ -21,7 +21,6 @@ include(../libLumina/LIconCache.pri)
 TEMPLATE = app
 
 SOURCES += main.cpp \
-	WMProcess.cpp \
 	LXcbEventFilter.cpp \
 	LSession.cpp \
 	LDesktop.cpp \
@@ -37,7 +36,6 @@ SOURCES += main.cpp \
 
 
 HEADERS  += Globals.h \
-	WMProcess.h \
 	LXcbEventFilter.h \
 	LSession.h \
 	LDesktop.h \

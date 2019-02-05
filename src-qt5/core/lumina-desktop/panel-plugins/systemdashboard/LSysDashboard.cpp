@@ -19,10 +19,10 @@ LSysDashboard::LSysDashboard(QWidget *parent, QString id, bool horizontal) : LPP
     this->layout()->addWidget(button);
   menu = new QMenu(this);
     connect(menu, SIGNAL(aboutToHide()), this, SIGNAL(MenuClosed()));
-  sysmenu = new LSysMenuQuick(this);
-    connect(sysmenu, SIGNAL(CloseMenu()), this, SLOT(closeMenu()) );
+  //sysmenu = new LSysMenuQuick(this);
+    //connect(sysmenu, SIGNAL(CloseMenu()), this, SLOT(closeMenu()) );
   mact = new QWidgetAction(this);
-    mact->setDefaultWidget(sysmenu);
+    //mact->setDefaultWidget(sysmenu);
     menu->addAction(mact);
 	
   button->setMenu(menu);
@@ -81,7 +81,7 @@ void LSysDashboard::resetIcon(){
 }
 
 void LSysDashboard::openMenu(){
-  sysmenu->UpdateMenu();
+  //sysmenu->UpdateMenu();
   button->showMenu();
 }
 

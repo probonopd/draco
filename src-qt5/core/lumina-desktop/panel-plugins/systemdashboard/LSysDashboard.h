@@ -28,7 +28,7 @@
 
 //Local includes
 #include "../LPPlugin.h"
-#include "SysMenuQuick.h"
+//#include "SysMenuQuick.h"
 
 class LSysDashboard : public LPPlugin{
 	Q_OBJECT
@@ -39,7 +39,7 @@ public:
 private:
 	QMenu *menu;
 	QWidgetAction *mact;
-	LSysMenuQuick *sysmenu;
+    //LSysMenuQuick *sysmenu;
 	QToolButton *button;
 	QTimer *upTimer;
 	
@@ -52,12 +52,12 @@ private slots:
 public slots:
 	void LocaleChange(){
 	  updateIcon(true);
-	  sysmenu->UpdateMenu();
+//	  sysmenu->UpdateMenu();
 	}
 	
 	void ThemeChange(){
 	  updateIcon(true);
-	  sysmenu->UpdateMenu();
+//	  sysmenu->UpdateMenu();
 	}
 	
 	void OrientationChange(){
