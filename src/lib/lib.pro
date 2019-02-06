@@ -1,15 +1,19 @@
-TARGET = DracoDesktop
-VERSION = 1.0.0
-TEMPLATE = lib
+include($${top_srcdir}/src/src.pri)
 
 QT += core network concurrent x11extras svg
+TARGET = $${DESKTOP_TARGET_NAME}Desktop
+TEMPLATE = lib
+
+DESTDIR = $${top_builddir}/lib$${LIBSUFFIX}
+OBJECTS_DIR = $${DESTDIR}/.obj_libdesktop
+MOC_DIR = $${DESTDIR}/.moc_libdesktop
+RCC_DIR = $${DESTDIR}/.qrc_libdesktop
 
 HEADERS += \
     DesktopSettings.h \
     LDesktopUtils.h \
     LIconCache.h \
     LInputDevice.h \
-    LuminaOS.h \
     LUtils.h \
     LuminaRandR.h \
     LuminaSingleApplication.h \
@@ -25,7 +29,6 @@ SOURCES += \
     LDesktopUtils.cpp \
     LIconCache.cpp \
     LInputDevice.cpp \
-    LuminaOS-template.cpp \
     LUtils.cpp \
     LuminaRandR-X11.cpp \
     LuminaSingleApplication.cpp \
@@ -36,6 +39,35 @@ SOURCES += \
     ResizeMenu.cpp \
     XDGMime.cpp
 
-LIBS += -lc -lxcb -lxcb-xinput
-LIBS += -lxcb -lxcb-randr
-LIBS += -lc -lxcb -lxcb-ewmh -lxcb-icccm -lxcb-image -lxcb-composite -lxcb-damage -lxcb-util -lXdamage
+PKGCONFIG += \
+    xcb \
+    xcb-xinput \
+    xcb-randr \
+    xcb-ewmh \
+    xcb-icccm \
+    xcb-image \
+    xcb-composite \
+    xcb-damage \
+    xcb-util \
+    xdamage
+
+CONFIG += create_prl no_install_prl create_pc
+
+target.path = $${LIBDIR}
+docs.path = $${DOCDIR}/$${DESKTOP_TARGET}-desktop-$${VERSION}
+docs.files += $${top_srcdir}/doc/LICENSE-Lumina $${top_srcdir}/README.md
+includes.path = $${PREFIX}/include/$${DESKTOP_TARGET_NAME}Desktop
+includes.files = $${HEADERS}
+
+QMAKE_PKGCONFIG_NAME = $${DESKTOP_TARGET_NAME}Desktop
+QMAKE_PKGCONFIG_DESCRIPTION = $${DESKTOP_TARGET_NAME} Desktop Library
+QMAKE_PKGCONFIG_LIBDIR = $$target.path
+QMAKE_PKGCONFIG_INCDIR = $$includes.path
+QMAKE_PKGCONFIG_DESTDIR = pkgconfig
+
+INSTALLS += target docs includes
+
+
+#LIBS += -lc -lxcb -lxcb-xinput
+#LIBS += -lxcb -lxcb-randr
+#LIBS += -lc -lxcb -lxcb-ewmh -lxcb-icccm -lxcb-image -lxcb-composite -lxcb-damage -lxcb-util -lXdamage

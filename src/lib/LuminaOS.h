@@ -9,8 +9,8 @@
 //    called "LuminaOS-<Operating System>.cpp", and use that file in
 //    the project (libLumina.pro) instead of LuminaOS-FreeBSD.cpp
 //===========================================
-#ifndef _LUMINA_LIBRARY_OS_H
-#define _LUMINA_LIBRARY_OS_H
+#ifndef LUMINA_LIBRARY_OS_H
+#define LUMINA_LIBRARY_OS_H
 
 #include <QString>
 #include <QStringList>

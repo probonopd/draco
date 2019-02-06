@@ -49,7 +49,7 @@ void SettingsMenu::UpdateMenu(){
 	act->setWhatsThis(qtconfig);
 	this->addAction(act);
   }*/
-  QString CONTROLPANEL = LOS::ControlPanelShortcut();
+  QString CONTROLPANEL;// = LOS::ControlPanelShortcut();
   if(QFile::exists(CONTROLPANEL) && !CONTROLPANEL.isEmpty()){
     //Now load the info
     XDGDesktop cpan(CONTROLPANEL);

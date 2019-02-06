@@ -127,7 +127,7 @@ void UserWidget::UpdateAll(){
   ui->tool_config_about->setIcon( LXDG::findIcon("lumina","") );
   
   //Setup the special buttons
-  QString APPSTORE = LOS::AppStoreShortcut();
+  QString APPSTORE;// = LOS::AppStoreShortcut();
   if(QFile::exists(APPSTORE) && !APPSTORE.isEmpty()){
     //Now load the info
     XDGDesktop store(APPSTORE);
@@ -140,7 +140,7 @@ void UserWidget::UpdateAll(){
   }else{
     ui->tool_app_store->setVisible(false); //not available
   }
-  QString CONTROLPANEL = LOS::ControlPanelShortcut();
+  QString CONTROLPANEL;// = LOS::ControlPanelShortcut();
   if(QFile::exists(CONTROLPANEL) && !CONTROLPANEL.isEmpty()){
     //Now load the info
     XDGDesktop cpan(CONTROLPANEL);

@@ -1,60 +1,74 @@
-#include($${PWD}/../../OS-detect.pri)
+include($${top_srcdir}/src/src.pri)
 
 QT += network widgets x11extras concurrent svg
 
-TARGET = draco-desktop
-#target.path = $${L_BINDIR}
-
-#include all the special classes from the Lumina tree
-include(../libLumina/ResizeMenu.pri)
-include(../libLumina/LDesktopUtils.pri) #includes LUtils and LOS
-include(../libLumina/LuminaXDG.pri)
-include(../libLumina/LuminaX11.pri)
-include(../libLumina/LuminaSingleApplication.pri)
-include(../libLumina/LuminaThemes.pri)
-include(../libLumina/LIconCache.pri)
-
-LIBS = -L$${PWD}/core/libLumina
-INCLUDEPATH = $${PWD}/core/libLumina
-
+TARGET = $${DESKTOP_TARGET}-desktop
 TEMPLATE = app
 
-SOURCES += main.cpp \
-	LXcbEventFilter.cpp \
-	LSession.cpp \
-	LDesktop.cpp \
-	LDesktopBackground.cpp \
-	LDesktopPluginSpace.cpp \
-	LPanel.cpp \
-	LWinInfo.cpp \
-	AppMenu.cpp \
-	SettingsMenu.cpp \
-	SystemWindow.cpp \
-	desktop-plugins/LDPlugin.cpp
+DEFINES += DESKTOP_APP=\"\\\"$${DESKTOP_TARGET}\\\"\"
+DEFINES += DESKTOP_APP_NAME=\"\\\"$${DESKTOP_TARGET_NAME}\\\"\"
+DEFINES += DESKTOP_APP_VERSION=\"\\\"$${VERSION}\\\"\"
+DEFINES += DESKTOP_APP_DOMAIN=\"\\\"$${DESKTOP_TARGET_DOMAIN}\\\"\"
 
+DESTDIR = $${top_builddir}/bin
+OBJECTS_DIR = $${DESTDIR}/.obj_desktop
+MOC_DIR = $${DESTDIR}/.moc_desktop
+RCC_DIR = $${DESTDIR}/.qrc_desktop
 
-HEADERS  += Globals.h \
-	LXcbEventFilter.h \
-	LSession.h \
-	LDesktop.h \
-	LDesktopBackground.h \
-	LDesktopPluginSpace.h \
-	LPanel.h \
-	LWinInfo.h \
-	AppMenu.h \
-	SettingsMenu.h \
-	SystemWindow.h \
-	panel-plugins/LPPlugin.h \
-	panel-plugins/NewPP.h \
-	panel-plugins/LTBWidget.h \
-	desktop-plugins/LDPlugin.h \
-	desktop-plugins/NewDP.h \
-	JsonMenu.h
+INCLUDEPATH += $${top_srcdir}/src/lib
+LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
+!CONFIG(staticlib): QMAKE_RPATHDIR += $ORIGIN/../lib$${LIBSUFFIX}
 
-FORMS    += SystemWindow.ui
+PKGCONFIG += xcb-atom
+CONFIG(staticlib) {
+    PKGCONFIG += \
+        xcb \
+        xcb-xinput \
+        xcb-randr \
+        xcb-ewmh \
+        xcb-icccm \
+        xcb-image \
+        xcb-composite \
+        xcb-damage \
+        xcb-util \
+        xdamage
+}
 
+SOURCES += \
+    main.cpp \
+    LXcbEventFilter.cpp \
+    LSession.cpp \
+    LDesktop.cpp \
+    LDesktopBackground.cpp \
+    LDesktopPluginSpace.cpp \
+    LPanel.cpp \
+    LWinInfo.cpp \
+    AppMenu.cpp \
+    SettingsMenu.cpp \
+    SystemWindow.cpp \
+    desktop-plugins/LDPlugin.cpp
 
-#Now include all the files for the various plugins
+HEADERS += \
+    Globals.h \
+    LXcbEventFilter.h \
+    LSession.h \
+    LDesktop.h \
+    LDesktopBackground.h \
+    LDesktopPluginSpace.h \
+    LPanel.h \
+    LWinInfo.h \
+    AppMenu.h \
+    SettingsMenu.h \
+    SystemWindow.h \
+    panel-plugins/LPPlugin.h \
+    panel-plugins/NewPP.h \
+    panel-plugins/LTBWidget.h \
+    desktop-plugins/LDPlugin.h \
+    desktop-plugins/NewDP.h \
+    JsonMenu.h
+
+FORMS += SystemWindow.ui
+
 include(panel-plugins/panel-plugins.pri)
 include(desktop-plugins/desktop-plugins.pri)
 

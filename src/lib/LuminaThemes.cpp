@@ -25,7 +25,7 @@
 
 QStringList LTHEME::availableSystemThemes(){
   //returns: [name::::path] for each item
-  QDir dir(LOS::LuminaShare()+"../lthemeengine/desktop_qss");
+  QDir dir;//(LOS::LuminaShare()+"../lthemeengine/desktop_qss");
   QStringList list = dir.entryList(QStringList() <<"*.qss", QDir::Files, QDir::Name);
   for(int i=0; i<list.length(); i++){
     //Format the output entry [<name>::::<fullpath>]
@@ -36,7 +36,7 @@ QStringList LTHEME::availableSystemThemes(){
 
 QStringList LTHEME::availableSystemStyles(){
   //returns: [name::::path] for each item
-  QDir dir(LOS::LuminaShare()+"../lthemeengine/qss");
+  QDir dir;//(LOS::LuminaShare()+"../lthemeengine/qss");
   QStringList list = dir.entryList(QStringList() <<"*.qss", QDir::Files, QDir::Name);
   for(int i=0; i<list.length(); i++){
     //Format the output entry [<name>::::<fullpath>]
@@ -67,7 +67,7 @@ QStringList LTHEME::availableLocalStyles(){	//returns: [name::::path] for each i
 
 QStringList LTHEME::availableSystemColors(){ 	//returns: [name::::path] for each item
   //returns: [name::::path] for each item
-  QDir dir(LOS::LuminaShare()+"../lthemeengine/colors");
+  QDir dir;//(LOS::LuminaShare()+"../lthemeengine/colors");
   QStringList list = dir.entryList(QStringList() <<"*.conf", QDir::Files, QDir::Name);
   for(int i=0; i<list.length(); i++){
     //Format the output entry [<name>::::<fullpath>]
@@ -174,8 +174,8 @@ QStringList LTHEME::currentSettings(){ //returns [theme path, colorspath, iconsn
   QSettings engineset("lthemeengine","lthemeengine");
   out[2]=engineset.value("Appearance/icon_theme", "material-design-light").toString();
   bool nofile = settings.isEmpty();
-  if(out[0].isEmpty() || !QFile::exists(out[0]) ){ out[0] = LOS::LuminaShare()+"themes/Lumina-default.qss.template"; }
-  if(out[1].isEmpty() || !QFile::exists(out[1]) ){ out[1] = LOS::LuminaShare()+"colors/Lumina-Glass.qss.colors"; }
+  //if(out[0].isEmpty() || !QFile::exists(out[0]) ){ out[0] = LOS::LuminaShare()+"themes/Lumina-default.qss.template"; }
+  //if(out[1].isEmpty() || !QFile::exists(out[1]) ){ out[1] = LOS::LuminaShare()+"colors/Lumina-Glass.qss.colors"; }
   if(out[3].isEmpty()){ out[3] = QFont().defaultFamily(); }
   if(out[4].isEmpty()){
     int num = QFont().pointSize(); out[4] = QString::number(num)+"pt"; //Check point size first
@@ -331,7 +331,7 @@ QString LTHEME::assembleStyleSheet(QString themepath, QString colorpath, QString
 QStringList LTHEME::cursorInformation(QString name){
   //returns: [Name, Comment, Sample Image File]
   QStringList out; out << "" << "" << ""; //ensure consistent output structure
-  QStringList paths; paths << LOS::SysPrefix()+"lib/X11/icons/" << LOS::AppPrefix()+"lib/X11/icons/";
+  QStringList paths; paths;// << LOS::SysPrefix()+"lib/X11/icons/";// << LOS::AppPrefix()+"lib/X11/icons/";
   for(int i=0; i<paths.length(); i++){
     if(QFile::exists(paths[i]+name)){
       if(QFile::exists(paths[i]+name+"/cursors/arrow")){ out[2] = paths[i]+name+"/cursors/arrow"; }

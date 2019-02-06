@@ -72,10 +72,10 @@ private slots:
 
 	//Slots for the special buttons
 	void openStore(){
-	  LaunchItem(LOS::AppStoreShortcut());
+      //LaunchItem(LOS::AppStoreShortcut());
 	}
 	void openControlPanel(){
-	  LaunchItem(LOS::ControlPanelShortcut());
+      //LaunchItem(LOS::ControlPanelShortcut());
 	}
 	void openDeskSettings(){
 	  LaunchItem("lumina-config", false);

@@ -16,8 +16,8 @@
 //  connect(app, SIGNAL(InputsAvailable(QStringList)), w, SLOT(<some slot>)); //for interactive apps - optional
 //  app.exec();
 //===========================================
-#ifndef _LUMINA_LIBRARY_SINGLE_APPLICATION_H
-#define _LUMINA_LIBRARY_SINGLE_APPLICATION_H
+#ifndef LUMINA_LIBRARY_SINGLE_APPLICATION_H
+#define LUMINA_LIBRARY_SINGLE_APPLICATION_H
 
 #include <QString>
 #include <QStringList>

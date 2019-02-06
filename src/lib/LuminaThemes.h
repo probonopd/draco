@@ -7,8 +7,8 @@
 //  This class governs all the stylesheet usage and interactions
 //  for the Lumina utilities to provide a consistant theme for the system
 //===========================================
-#ifndef _LUMINA_LIBRARY_THEMES_H
-#define _LUMINA_LIBRARY_THEMES_H
+#ifndef LUMINA_LIBRARY_THEMES_H
+#define LUMINA_LIBRARY_THEMES_H
 
 #include <QApplication>
 #include <QObject>
