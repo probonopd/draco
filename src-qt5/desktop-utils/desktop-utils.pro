@@ -4,13 +4,7 @@ include("../OS-detect.pri")
 TEMPLATE = subdirs
 CONFIG += recursive
 
-SUBDIRS+= lumina-fm \
-	lumina-screenshot \
-	lumina-fileinfo \
+SUBDIRS+= \
 	lumina-textedit \
 	lumina-calculator \
-	lumina-archiver \
-#	lumina-notify \
-	lumina-mediaplayer \
-	lumina-pdf \
-	lumina-photo
+	lumina-archiver
