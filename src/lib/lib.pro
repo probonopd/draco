@@ -53,7 +53,7 @@ PKGCONFIG += \
 
 target.path = $${LIBDIR}
 docs.path = $${DOCDIR}/$${DESKTOP_TARGET}-desktop-$${VERSION}
-docs.files += $${top_srcdir}/doc/LICENSE-Lumina $${top_srcdir}/README.md
+docs.files += $${top_srcdir}/docs/LICENSE-Lumina $${top_srcdir}/docs/README.md
 includes.path = $${PREFIX}/include/$${DESKTOP_TARGET_NAME}Desktop
 includes.files = $${HEADERS}
 
