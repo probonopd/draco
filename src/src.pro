@@ -1,3 +1,4 @@
 TEMPLATE = subdirs
-CONFIG += recursive
+CONFIG -= order
 SUBDIRS+= lib desktop
+desktop.depends = lib
