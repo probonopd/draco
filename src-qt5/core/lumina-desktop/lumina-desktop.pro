@@ -1,7 +1,7 @@
 include($${PWD}/../../OS-detect.pri)
 
 QT       += core gui network
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets x11extras multimedia concurrent svg
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets x11extras concurrent svg
 
 
 
@@ -15,7 +15,7 @@ include(../libLumina/LuminaXDG.pri)
 include(../libLumina/LuminaX11.pri)
 include(../libLumina/LuminaSingleApplication.pri)
 include(../libLumina/LuminaThemes.pri)
-include(../libLumina/ExternalProcess.pri)
+#include(../libLumina/ExternalProcess.pri)
 include(../libLumina/LIconCache.pri)
 
 TEMPLATE = app
@@ -31,7 +31,6 @@ SOURCES += main.cpp \
 	AppMenu.cpp \
 	SettingsMenu.cpp \
 	SystemWindow.cpp \
-	BootSplash.cpp \
 	desktop-plugins/LDPlugin.cpp
 
 
@@ -46,7 +45,6 @@ HEADERS  += Globals.h \
 	AppMenu.h \
 	SettingsMenu.h \
 	SystemWindow.h \
-	BootSplash.h \
 	panel-plugins/LPPlugin.h \
 	panel-plugins/NewPP.h \
 	panel-plugins/LTBWidget.h \
@@ -54,8 +52,7 @@ HEADERS  += Globals.h \
 	desktop-plugins/NewDP.h \
 	JsonMenu.h
 
-FORMS    += SystemWindow.ui \
-	BootSplash.ui 
+FORMS    += SystemWindow.ui
 
 
 #Now include all the files for the various plugins

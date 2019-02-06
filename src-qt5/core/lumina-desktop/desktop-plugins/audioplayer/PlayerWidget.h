@@ -9,8 +9,8 @@
 #ifndef _LUMINA_DESKTOP_PLUGIN_AUDIO_PLAYER_WIDGET_H
 #define _LUMINA_DESKTOP_PLUGIN_AUDIO_PLAYER_WIDGET_H
 
-#include <QMediaPlaylist>
-#include <QMediaPlayer>
+//#include <QMediaPlaylist>
+//#include <QMediaPlayer>
 #include <QTimer>
 #include <QWidget>
 #include <QMenu>
@@ -32,8 +32,8 @@ public slots:
 
 private:
 	Ui::PlayerWidget *ui;
-	QMediaPlaylist *PLAYLIST;
-	QMediaPlayer *PLAYER;
+    //QMediaPlaylist *PLAYLIST;
+//	QMediaPlayer *PLAYER;
 	QMenu *configMenu, *addMenu;
 	bool updatinglists;
 
@@ -74,10 +74,10 @@ private:
 
 public slots:
 	void LocaleChange(){
-	  QTimer::singleShot(0,player, SLOT(LoadIcons()));
+    //  QTimer::singleShot(0,player, SLOT(LoadIcons()));
 	}
 	void ThemeChange(){
-	  QTimer::singleShot(0,player, SLOT(LoadIcons()));
+//	  QTimer::singleShot(0,player, SLOT(LoadIcons()));
 	}
 };
 

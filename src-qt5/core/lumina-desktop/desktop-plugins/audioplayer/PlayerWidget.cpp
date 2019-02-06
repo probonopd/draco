@@ -17,13 +17,13 @@
 
 PlayerWidget::PlayerWidget(QWidget *parent) : QWidget(parent), ui(new Ui::PlayerWidget()){
   ui->setupUi(this); //load the designer form
-  PLAYER = new QMediaPlayer(this);
+/*  PLAYER = new QMediaPlayer(this);
     PLAYER->setVolume(100);
     PLAYER->setNotifyInterval(1000); //1 second interval (just needs to be a rough estimate)
   PLAYLIST = new QMediaPlaylist(this);
     PLAYLIST->setPlaybackMode(QMediaPlaylist::Sequential);
     PLAYER->setPlaylist(PLAYLIST);
-	
+    */
   configMenu = new QMenu(this);
     ui->tool_config->setMenu(configMenu);
   addMenu = new QMenu(this);
@@ -38,11 +38,11 @@ PlayerWidget::PlayerWidget(QWidget *parent) : QWidget(parent), ui(new Ui::Player
   currentSongChanged();
   //Connect all the signals/slots
   //connect(infoTimer, SIGNAL(timeout()), this, SLOT(rotateTrackInfo()) );
-  connect(PLAYER, SIGNAL(positionChanged(qint64)),this, SLOT(updateProgress(qint64)) );
+  /*connect(PLAYER, SIGNAL(positionChanged(qint64)),this, SLOT(updateProgress(qint64)) );
   connect(PLAYER, SIGNAL(durationChanged(qint64)), this, SLOT(updateMaxProgress(qint64)) );
   connect(PLAYLIST, SIGNAL(mediaChanged(int, int)), this, SLOT(playlistChanged()) );
   connect(PLAYER, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(playerStateChanged()) );
-  connect(PLAYLIST, SIGNAL(currentMediaChanged(const QMediaContent&)), this, SLOT(currentSongChanged()) );
+  connect(PLAYLIST, SIGNAL(currentMediaChanged(const QMediaContent&)), this, SLOT(currentSongChanged()) );*/
   connect(ui->combo_playlist, SIGNAL(currentIndexChanged(int)), this, SLOT(userlistSelectionChanged()) );
   connect(ui->tool_play, SIGNAL(clicked()), this, SLOT(playClicked()) );
   connect(ui->tool_pause, SIGNAL(clicked()), this, SLOT(pauseClicked()) );
@@ -75,23 +75,23 @@ void PlayerWidget::LoadIcons(){
 }
 
 void PlayerWidget::playClicked(){
-  PLAYER->play();	
+ // PLAYER->play();
 }
 
 void PlayerWidget::pauseClicked(){
-  PLAYER->pause();	
+//  PLAYER->pause();
 }
 
 void PlayerWidget::stopClicked(){
-  PLAYER->stop();	
+//  PLAYER->stop();
 }
 
 void PlayerWidget::nextClicked(){
-  PLAYLIST->next();	
+//  PLAYLIST->next();
 }
 
 void PlayerWidget::prevClicked(){
-  PLAYLIST->previous();
+ // PLAYLIST->previous();
 }
 
 void PlayerWidget::AddFilesToPlaylist(){
@@ -114,11 +114,11 @@ void PlayerWidget::AddFilesToPlaylist(){
   if(files.isEmpty()  || dlg.result()!=QDialog::Accepted){ return; } //cancelled
   //Make this use show/processEvents later
   //QList<QUrl> files = QFileDialog::getOpenFileUrls(0, tr("Select Multimedia Files"),  QDir::homePath(), "Multimedia Files ("+LXDG::findAVFileExtensions().join(" ")+")");
-  QList<QMediaContent> urls;
+ /* QList<QMediaContent> urls;
   for(int i=0; i<files.length(); i++){
     urls << QMediaContent(files[i]);
   }
-  PLAYLIST->addMedia(urls);
+  PLAYLIST->addMedia(urls);*/
   playlistChanged();
 }
 
@@ -145,11 +145,11 @@ void PlayerWidget::AddDirToPlaylist(){
   QDir dir(dirpath);
   QFileInfoList files = dir.entryInfoList(LXDG::findAVFileExtensions(), QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
   if(files.isEmpty()){ return; } //nothing in this directory
-  QList<QMediaContent> urls;
+ /* QList<QMediaContent> urls;
   for(int i=0; i<files.length(); i++){
     urls << QMediaContent(QUrl::fromLocalFile(files[i].absoluteFilePath()) );
   }
-  PLAYLIST->addMedia(urls);
+  PLAYLIST->addMedia(urls);*/
   playlistChanged();
 }
 
@@ -174,28 +174,28 @@ void PlayerWidget::AddURLToPlaylist(){
   //if(url.isEmpty()){ return; }
   QUrl newurl(url);
   if(!newurl.isValid()){ return; } //invalid URL
-  PLAYLIST->addMedia(newurl);
+  //PLAYLIST->addMedia(newurl);
   playlistChanged();
 }
 
 void PlayerWidget::ClearPlaylist(){
-  PLAYER->stop();
-  PLAYLIST->clear();	
+/*  PLAYER->stop();
+  PLAYLIST->clear();	*/
   playlistChanged();
 }
 
 void PlayerWidget::ShufflePlaylist(){
-  PLAYLIST->shuffle();	
+  //PLAYLIST->shuffle();
 }
 
 
 void PlayerWidget::userlistSelectionChanged(){ //front-end combobox was changed by the user
   if(updatinglists){ return; }
-  PLAYLIST->setCurrentIndex( ui->combo_playlist->currentIndex() );
+ // PLAYLIST->setCurrentIndex( ui->combo_playlist->currentIndex() );
 }
 
 void PlayerWidget::playerStateChanged(){
-  switch( PLAYER->state() ){
+/* switch( PLAYER->state() ){
     case QMediaPlayer::StoppedState:
       ui->tool_stop->setVisible(false);
       ui->tool_play->setVisible(true);
@@ -215,13 +215,13 @@ void PlayerWidget::playerStateChanged(){
       ui->progressBar->setVisible(true);
       break;    
   }
-  
+  */
 }
 
 void PlayerWidget::playlistChanged(){
   updatinglists = true;
   ui->combo_playlist->clear();
-  for(int i=0; i<PLAYLIST->mediaCount(); i++){
+ /* for(int i=0; i<PLAYLIST->mediaCount(); i++){
     QUrl url = PLAYLIST->media(i).canonicalUrl();
     if(url.isLocalFile()){
       ui->combo_playlist->addItem(LXDG::findMimeIcon(url.fileName().section(".",-1)), url.fileName() );	
@@ -231,12 +231,12 @@ void PlayerWidget::playlistChanged(){
   }
   if(PLAYLIST->currentIndex()<0 && PLAYLIST->mediaCount()>0){ PLAYLIST->setCurrentIndex(0); }
   ui->combo_playlist->setCurrentIndex(PLAYLIST->currentIndex());
-  
+  */
   updatinglists = false;
 }
 
 void PlayerWidget::currentSongChanged(){
-  if(PLAYLIST->currentIndex() != ui->combo_playlist->currentIndex()){
+ /* if(PLAYLIST->currentIndex() != ui->combo_playlist->currentIndex()){
     updatinglists = true;
     ui->combo_playlist->setCurrentIndex(PLAYLIST->currentIndex());
     updatinglists = false;
@@ -245,7 +245,7 @@ void PlayerWidget::currentSongChanged(){
   ui->tool_prev->setEnabled( PLAYLIST->previousIndex() >= 0);
   ui->label_num->setText( QString::number( PLAYLIST->currentIndex()+1)+"/"+QString::number(PLAYLIST->mediaCount()) );
   ui->progressBar->setRange(0, PLAYER->duration() );
-  ui->progressBar->setValue(0);
+  ui->progressBar->setValue(0);*/
 }
 
 void PlayerWidget::updateProgress(qint64 val){

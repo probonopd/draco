@@ -1,4 +1,4 @@
-QT *= multimedia svg
+QT *= svg
 
 #LUtils Files
 SOURCES *= $${PWD}/LuminaXDG.cpp \
