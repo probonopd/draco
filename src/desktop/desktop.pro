@@ -5,11 +5,6 @@ QT += network widgets x11extras concurrent svg
 TARGET = $${DESKTOP_TARGET}-desktop
 TEMPLATE = app
 
-DEFINES += DESKTOP_APP=\"\\\"$${DESKTOP_TARGET}\\\"\"
-DEFINES += DESKTOP_APP_NAME=\"\\\"$${DESKTOP_TARGET_NAME}\\\"\"
-DEFINES += DESKTOP_APP_VERSION=\"\\\"$${VERSION}\\\"\"
-DEFINES += DESKTOP_APP_DOMAIN=\"\\\"$${DESKTOP_TARGET_DOMAIN}\\\"\"
-
 DESTDIR = $${top_builddir}/bin
 OBJECTS_DIR = $${DESTDIR}/.obj_desktop
 MOC_DIR = $${DESTDIR}/.moc_desktop
@@ -117,4 +112,7 @@ include(desktop-plugins/desktop-plugins.pri)
 
 #INSTALLS += target
 # desktop icons defaults conf fluxconf manpage
+
+RESOURCES += \
+    desktop.qrc
 

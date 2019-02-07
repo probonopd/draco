@@ -22,7 +22,8 @@ HEADERS += \
     LuminaXDG.h \
     LFileInfo.h \
     ResizeMenu.h \
-    XDGMime.h
+    XDGMime.h \
+    common.h
 
 SOURCES += \
     DesktopSettings.cpp \
