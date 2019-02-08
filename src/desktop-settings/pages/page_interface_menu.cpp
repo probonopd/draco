@@ -8,7 +8,7 @@
 #include "ui_page_interface_menu.h"
 #include "../AppDialog.h"
 #include "../GetPluginDialog.h"
-#include "../ScriptDialog.h"
+//#include "../ScriptDialog.h"
 //==========
 //    PUBLIC
 //==========
@@ -130,7 +130,7 @@ void page_interface_menu::addmenuplugin(){
     it = new QListWidgetItem(LXDG::findIcon(desk.icon,""), desk.name );
       it->setWhatsThis(info.ID+"::::"+desk.filePath);
       it->setToolTip( desk.comment );
-  }else if(info.ID=="jsonmenu"){
+  }/*else if(info.ID=="jsonmenu"){
     //Need to prompt for the script file, name, and icon to use
     //new ID format: "jsonmenu"::::<exec to run>::::<name>::::<icon>
     ScriptDialog SD(this);
@@ -139,7 +139,7 @@ void page_interface_menu::addmenuplugin(){
     it = new QListWidgetItem( LXDG::findIcon(SD.icon(),"text-x-script"), SD.name()+" ("+info.ID+")" );
     it->setWhatsThis(info.ID+"::::"+SD.command()+"::::"+SD.name()+"::::"+SD.icon());
     it->setToolTip( info.description );
-  }else{
+  }*/else{
     it = new QListWidgetItem( LXDG::findIcon(info.icon,""), info.name );
     it->setWhatsThis(info.ID);
     it->setToolTip( info.description );

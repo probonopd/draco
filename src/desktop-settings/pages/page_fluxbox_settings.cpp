@@ -83,7 +83,7 @@ void page_fluxbox_settings::LoadSettings(int){
     ui->combo_session_wloc->addItem( tr("Underneath Mouse"), "UnderMousePlacement");
 
     ui->combo_session_wtheme->clear();
-    QStringList dirs; dirs << LOS::AppPrefix()+"share/fluxbox/styles" << QDir::homePath()+"/.fluxbox/styles";
+    QStringList dirs; dirs;// << LOS::AppPrefix()+"share/fluxbox/styles" << QDir::homePath()+"/.fluxbox/styles";
     QFileInfoList fbstyles; 
     for(int i=0; i<dirs.length(); i++){
       QDir fbdir(dirs[i]);
