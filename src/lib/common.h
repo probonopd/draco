@@ -2,10 +2,11 @@
 #define COMMON_H
 
 #include <QObject>
-#include <QString>
+#include <QStringList>
 #include <QDir>
 #include <QFile>
 #include <QDebug>
+#include <QDirIterator>
 
 #define DE_SESSION_SETTINGS "sessionsettings"
 #define DE_DESKTOP_SETTINGS "desktopsettings"
@@ -61,6 +62,33 @@ public:
             // TODO add default
         }
         return file;
+    }
+    static QStringList iconLocations(const QString &appPath)
+    {
+        QStringList result;
+        result << QString("%1/.local/share/icons").arg(QDir::homePath());
+        result << QString("%1/../share/icons").arg(appPath);
+        result << "/usr/share/icons" << "/usr/local/share/icons";
+        result << "/usr/pkg/share/icons";
+        return result;
+    }
+    static QStringList pixmapLocations(const QString &appPath)
+    {
+        QStringList result;
+        result << QString("%1/.local/share/pixmaps").arg(QDir::homePath());
+        result << QString("%1/../share/pixmaps").arg(appPath);
+        result << "/usr/share/pixmaps" << "/usr/local/share/pixmaps";
+        result << "/usr/pkg/share/pixmaps";
+        return result;
+    }
+    static QStringList applicationLocations(const QString &appPath)
+    {
+        QStringList result;
+        result << QString("%1/.local/share/applications").arg(QDir::homePath());
+        result << QString("%1/../share/applications").arg(appPath);
+        result << "/usr/share/applications" << "/usr/local/share/applications";
+        result << "/usr/pkg/share/applications";
+        return result;
     }
 };
 

@@ -1,6 +1,6 @@
 include($${top_srcdir}/src/src.pri)
 
-QT += network widgets x11extras concurrent svg
+QT += network widgets x11extras concurrent
 
 TARGET = $${DESKTOP_TARGET}-desktop
 TEMPLATE = app

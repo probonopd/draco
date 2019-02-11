@@ -331,7 +331,7 @@ QString LTHEME::assembleStyleSheet(QString themepath, QString colorpath, QString
 QStringList LTHEME::cursorInformation(QString name){
   //returns: [Name, Comment, Sample Image File]
   QStringList out; out << "" << "" << ""; //ensure consistent output structure
-  QStringList paths; paths;// << LOS::SysPrefix()+"lib/X11/icons/";// << LOS::AppPrefix()+"lib/X11/icons/";
+  QStringList paths; //paths;// << LOS::SysPrefix()+"lib/X11/icons/";// << LOS::AppPrefix()+"lib/X11/icons/";
   for(int i=0; i<paths.length(); i++){
     if(QFile::exists(paths[i]+name)){
       if(QFile::exists(paths[i]+name+"/cursors/arrow")){ out[2] = paths[i]+name+"/cursors/arrow"; }
