@@ -7,7 +7,7 @@
 #include "SettingsMenu.h"
 #include "LSession.h"
 
-#include <LuminaOS.h>
+//#include <LuminaOS.h>
 
 SettingsMenu::SettingsMenu() : QMenu(){
   this->setObjectName("SettingsMenu");

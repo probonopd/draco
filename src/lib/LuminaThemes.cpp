@@ -7,7 +7,7 @@
 #include "LuminaThemes.h"
 
 #include "LUtils.h"
-#include "LuminaOS.h"
+//#include "LuminaOS.h"
 #include <QIcon>
 #include <QFont>
 #include <QDebug>

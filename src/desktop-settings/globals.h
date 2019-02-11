@@ -32,7 +32,7 @@
 #include <LUtils.h>
 #include <LDesktopUtils.h>
 #include <LuminaX11.h>
-#include <LuminaOS.h>
+//#include <LuminaOS.h>
 #include <LuminaThemes.h>
 
 #include "pages/PageWidget.h"
