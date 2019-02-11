@@ -1,8 +1,0 @@
-<RCC>
-  <qresource>
-    <file>Images/trueos_logo.png</file>
-    <file>Images/ix_logo.png</file>
-    <file>Images/Lumina-logo.png</file>
-    <file>LICENSE</file>
-  </qresource>
-</RCC>
