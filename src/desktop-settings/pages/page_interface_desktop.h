@@ -6,9 +6,9 @@
 //===========================================
 #ifndef _LUMINA_CONFIG_PAGE_INTERFACE_DESKTOP_H
 #define _LUMINA_CONFIG_PAGE_INTERFACE_DESKTOP_H
-#include "../globals.h"
+//#include "../globals.h"
 #include "PageWidget.h"
-#include "../LPlugins.h"
+#include "LPlugins.h"
 
 namespace Ui{
 	class page_interface_desktop;

@@ -44,7 +44,6 @@ SOURCES += \
     desktop-plugins/LDPlugin.cpp
 
 HEADERS += \
-    Globals.h \
     LXcbEventFilter.h \
     LSession.h \
     LDesktop.h \

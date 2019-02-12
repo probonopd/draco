@@ -6,8 +6,11 @@
 //===========================================
 #include "page_interface_desktop.h"
 #include "ui_page_interface_desktop.h"
-#include "../GetPluginDialog.h"
-#include "../AppDialog.h"
+#include "GetPluginDialog.h"
+#include "AppDialog.h"
+#include <QSettings>
+#include <QScreen>
+#include <QTimer>
 
 //==========
 //    PUBLIC
