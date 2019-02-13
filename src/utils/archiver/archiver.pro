@@ -14,14 +14,10 @@ INCLUDEPATH += $${top_srcdir}/src/lib
 LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
 !CONFIG(staticlib): QMAKE_RPATHDIR += $ORIGIN/../lib$${LIBSUFFIX}
 
-HEADERS	+= MainUI.h \
-        TarBackend.h
-		
-SOURCES	+= main.cpp \
-	MainUI.cpp \
-        TarBackend.cpp
+HEADERS += MainUI.h TarBackend.h
+SOURCES += main.cpp MainUI.cpp TarBackend.cpp
 
-FORMS		+= MainUI.ui
+FORMS = MainUI.ui
 
 #dotrans.path=$${L_SHAREDIR}/lumina-desktop/i18n/
 #dotrans.extra=cd $$PWD/i18n && $${LRELEASE} -nounfinished *.ts && cp *.qm $(INSTALL_ROOT)$${L_SHAREDIR}/lumina-desktop/i18n/
@@ -35,7 +31,7 @@ FORMS		+= MainUI.ui
 #manpage.path=$${L_MANDIR}/man1/
 #manpage.extra="$${MAN_ZIP} $$PWD/lumina-archiver.1 > $(INSTALL_ROOT)$${L_MANDIR}/man1/lumina-archiver.1.gz"
 
-I#NSTALLS += target desktop manpage
+#INSTALLS += target desktop manpage
 
 #WITH_I18N{
 #  INSTALLS += dotrans
