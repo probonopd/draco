@@ -56,7 +56,7 @@ private slots:
 	void ViewFile(QTreeWidgetItem *it);
 	void UpdateTree();
 
-	void BurnImgToUSB();
+    //void BurnImgToUSB();
 
 	//Backend Handling
 	void ProcStarting();

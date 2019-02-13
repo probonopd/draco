@@ -16,7 +16,7 @@ int  main(int argc, char *argv[]) {
    LTHEME::LoadCustomEnvSettings();
    QApplication a(argc, argv);
     a.setAttribute(Qt::AA_UseHighDpiPixmaps);
-   LUtils::LoadTranslation(&a, "l-archiver");
+   //LUtils::LoadTranslation(&a, "l-archiver");
    //Now go ahead and setup the app
    QStringList args;
    for(int i=1; i<argc; i++){

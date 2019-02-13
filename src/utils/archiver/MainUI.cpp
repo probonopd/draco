@@ -12,7 +12,7 @@
 #include <LuminaXDG.h>
 #include <LUtils.h>
 
-#include "imgDialog.h"
+//#include "imgDialog.h"
 
 #include <unistd.h>
 
@@ -48,7 +48,7 @@ MainUI::MainUI() : QMainWindow(), ui(new Ui::MainUI){
   connect(ui->actionExtract_Sel, SIGNAL(triggered()), this, SLOT(extractSelection()) );
   connect(ui->actionAdd_Dirs, SIGNAL(triggered()), this, SLOT(addDirs()) );
   connect(ui->tree_contents, SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int)), this, SLOT(ViewFile(QTreeWidgetItem*)) );
-  connect(ui->actionUSB_Image, SIGNAL(triggered()), this, SLOT(BurnImgToUSB()) );
+  //connect(ui->actionUSB_Image, SIGNAL(triggered()), this, SLOT(BurnImgToUSB()) );
   connect(ui->tree_contents, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()) );
 
   //Set Keyboard Shortcuts
@@ -64,7 +64,7 @@ MainUI::MainUI() : QMainWindow(), ui(new Ui::MainUI){
   ui->actionRemove_File->setEnabled(false);
   ui->actionExtract_All->setEnabled(false);
   ui->actionAdd_Dirs->setEnabled(false);
-  ui->actionUSB_Image->setEnabled(false);
+  //ui->actionUSB_Image->setEnabled(false);
   loadIcons();
   ui->tree_contents->setHeaderLabels( QStringList() << tr("File") << tr("MimeType") << tr("Size")+" " );
 
@@ -81,7 +81,7 @@ void MainUI::LoadArguments(QStringList args){
   for(int i=0; i<args.length(); i++){
     if(args[i].startsWith("--") ){
       if(action>=0){ break; }
-      else if(args[i]=="--burn-img"){ action = 0; continue; }
+      //else if(args[i]=="--burn-img"){ action = 0; continue; }
       else if(args[i]=="--ax"){ action = 1; continue; }
       else if(args[i]=="--aa"){ action = 2; continue; }
       else if(args[i]=="--sx"){ action = 3; continue; }
@@ -110,8 +110,8 @@ void MainUI::LoadArguments(QStringList args){
     connect(BACKEND, SIGNAL(ExtractSuccessful()), delayClose, SLOT(start()) );
   }
   BACKEND->loadFile(files[0]);
-  ui->actionUSB_Image->setEnabled(files[0].simplified().endsWith(".img") || files[0].simplified().endsWith(".iso"));
-  if(action==0){ BurnImgToUSB(); } //Go ahead and launch the burn dialog right away
+  //ui->actionUSB_Image->setEnabled(files[0].simplified().endsWith(".img") || files[0].simplified().endsWith(".iso"));
+  //if(action==0){ BurnImgToUSB(); } //Go ahead and launch the burn dialog right away
 
 }
 
@@ -125,7 +125,7 @@ void MainUI::loadIcons(){
   ui->actionRemove_File->setIcon( LXDG::findIcon("archive-remove","") );
   ui->actionExtract_All->setIcon( LXDG::findIcon("archive-extract","") );
   ui->actionExtract_Sel->setIcon( LXDG::findIcon("edit-select-all","") );
-  ui->actionUSB_Image->setIcon( LXDG::findIcon("drive-removable-media-usb-pendrive","drive-removable-media-usb") );
+  //ui->actionUSB_Image->setIcon( LXDG::findIcon("drive-removable-media-usb-pendrive","drive-removable-media-usb") );
 }
 
 //===================
@@ -380,11 +380,7 @@ void MainUI::UpdateTree(){
   ui->tree_contents->setEnabled(true);
 }
 
-void MainUI::BurnImgToUSB(){
-  imgDialog dlg(this);
-  dlg.loadIMG(BACKEND->currentFile());
-  dlg.exec();
-}
+
 
 //Backend Handling
 void MainUI::ProcStarting(){
