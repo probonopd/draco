@@ -1,6 +1,6 @@
 TEMPLATE = subdirs
 CONFIG -= order
-SUBDIRS+= lib desktop desktop-settings utils
+SUBDIRS+= lib desktop session utils
 desktop.depends = lib
-desktop-settings.depends = lib
+session.depends = lib
 utils.depends = lib

@@ -2,13 +2,13 @@ include($${top_srcdir}/src/src.pri)
 
 QT += widgets x11extras network
 
-TARGET = $${DESKTOP_TARGET}-desktop-settings
+TARGET = $${DESKTOP_TARGET}-config
 TEMPLATE = app
 
 DESTDIR = $${top_builddir}/bin
-OBJECTS_DIR = $${DESTDIR}/.obj_desktop-settings
-MOC_DIR = $${DESTDIR}/.moc_desktop-settings
-RCC_DIR = $${DESTDIR}/.qrc_desktop-settings
+OBJECTS_DIR = $${DESTDIR}/.obj_config
+MOC_DIR = $${DESTDIR}/.moc_config
+RCC_DIR = $${DESTDIR}/.qrc_config
 
 INCLUDEPATH += $${top_srcdir}/src/lib
 LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
