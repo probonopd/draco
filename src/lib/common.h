@@ -27,39 +27,46 @@ public:
                .arg(QDir::tempPath())
                .arg(DESKTOP_APP);
     }
+    static const QString configDir()
+    {
+        QString path = QString("%1/.config/%2-desktop").arg(QDir::homePath()).arg(DESKTOP_APP);
+        QDir dir(path);
+        if (!dir.exists(path)) { dir.mkpath(path); }
+        return path;
+    }
     static const QString sessionSettingsFile()
     {
-        QString file = QString("%1/.config/%2-desktop/%3.conf")
-                       .arg(QDir::homePath())
-                       .arg(DESKTOP_APP)
+        QString file = QString("%1/%2.conf")
+                       .arg(configDir())
                        .arg(DE_SESSION_SETTINGS);
         if (!QFile::exists(file)) {
             qDebug() << "no user session settings!";
-            // TODO add default
+            QFile mkfile(file);
+            if (mkfile.open(QIODevice::WriteOnly)) { mkfile.close(); }
         }
         return file;
     }
     static const QString desktopSettingsFile()
     {
-        QString file = QString("%1/.config/%2-desktop/%3.conf")
-                       .arg(QDir::homePath())
-                       .arg(DESKTOP_APP)
+        QString file = QString("%1/%2.conf")
+                       .arg(configDir())
                        .arg(DE_DESKTOP_SETTINGS);
         if (!QFile::exists(file)) {
             qDebug() << "no user desktop settings!";
-            // TODO add default
+            QFile mkfile(file);
+            if (mkfile.open(QIODevice::WriteOnly)) { mkfile.close(); }
         }
         return file;
     }
     static const QString envSettingsFile()
     {
-        QString file = QString("%1/.config/%2-desktop/%3.conf")
-                       .arg(QDir::homePath())
-                       .arg(DESKTOP_APP)
+        QString file = QString("%1/%2.conf")
+                       .arg(configDir())
                        .arg(DE_ENV_SETTINGS);
         if (!QFile::exists(file)) {
             qDebug() << "no user env settings!";
-            // TODO add default
+            QFile mkfile(file);
+            if (mkfile.open(QIODevice::WriteOnly)) { mkfile.close(); }
         }
         return file;
     }
