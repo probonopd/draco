@@ -58,8 +58,7 @@ HEADERS += \
     panel-plugins/NewPP.h \
     panel-plugins/LTBWidget.h \
     desktop-plugins/LDPlugin.h \
-    desktop-plugins/NewDP.h \
-    JsonMenu.h
+    desktop-plugins/NewDP.h
 
 FORMS += SystemWindow.ui
 
