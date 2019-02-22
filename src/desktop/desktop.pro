@@ -1,6 +1,6 @@
 include($${top_srcdir}/src/src.pri)
 
-QT += network widgets x11extras concurrent
+QT += network widgets x11extras concurrent dbus
 
 TARGET = $${DESKTOP_TARGET}-desktop
 TEMPLATE = app
@@ -10,11 +10,12 @@ OBJECTS_DIR = $${DESTDIR}/.obj_desktop
 MOC_DIR = $${DESTDIR}/.moc_desktop
 RCC_DIR = $${DESTDIR}/.qrc_desktop
 
-INCLUDEPATH += $${top_srcdir}/src/lib
+INCLUDEPATH += $${top_srcdir}/src/lib $${top_srcdir}/src/power/lib
 LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
 !CONFIG(staticlib): QMAKE_RPATHDIR += $ORIGIN/../lib$${LIBSUFFIX}
 
-PKGCONFIG += xcb-atom
+PKGCONFIG += xcb-atom xrandr x11
+
 CONFIG(staticlib) {
     PKGCONFIG += \
         xcb \
@@ -41,7 +42,11 @@ SOURCES += \
     AppMenu.cpp \
     SettingsMenu.cpp \
     SystemWindow.cpp \
-    desktop-plugins/LDPlugin.cpp
+    desktop-plugins/LDPlugin.cpp \
+    $${top_srcdir}/src/power/lib/hotplug.cpp \
+    $${top_srcdir}/src/power/lib/screens.cpp \
+    $${top_srcdir}/src/power/lib/device.cpp \
+    $${top_srcdir}/src/power/lib/powerkit.cpp
 
 HEADERS += \
     LXcbEventFilter.h \
@@ -58,7 +63,11 @@ HEADERS += \
     panel-plugins/NewPP.h \
     panel-plugins/LTBWidget.h \
     desktop-plugins/LDPlugin.h \
-    desktop-plugins/NewDP.h
+    desktop-plugins/NewDP.h \
+    $${top_srcdir}/src/power/lib/hotplug.h \
+    $${top_srcdir}/src/power/lib/screens.h \
+    $${top_srcdir}/src/power/lib/device.h \
+    $${top_srcdir}/src/power/lib/powerkit.h
 
 FORMS += SystemWindow.ui
 

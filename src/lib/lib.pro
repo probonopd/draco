@@ -9,7 +9,7 @@ OBJECTS_DIR = $${DESTDIR}/.obj_libdesktop
 MOC_DIR = $${DESTDIR}/.moc_libdesktop
 RCC_DIR = $${DESTDIR}/.qrc_libdesktop
 
-INCLUDEPATH += $${top_srcdir}/src/power/lib
+#INCLUDEPATH += $${top_srcdir}/src/power/lib
 
 HEADERS += \
     DesktopSettings.h \
@@ -25,9 +25,7 @@ HEADERS += \
     LFileInfo.h \
     ResizeMenu.h \
     XDGMime.h \
-    common.h \
-    $${top_srcdir}/src/power/lib/hotplug.h \
-    $${top_srcdir}/src/power/lib/screens.h
+    common.h
 
 SOURCES += \
     DesktopSettings.cpp \
@@ -42,9 +40,7 @@ SOURCES += \
     LuminaXDG.cpp \
     LFileInfo.cpp \
     ResizeMenu.cpp \
-    XDGMime.cpp \
-    $${top_srcdir}/src/power/lib/hotplug.cpp \
-    $${top_srcdir}/src/power/lib/screens.cpp
+    XDGMime.cpp
 
 PKGCONFIG += \
     xcb \
@@ -56,8 +52,7 @@ PKGCONFIG += \
     xcb-composite \
     xcb-damage \
     xcb-util \
-    xdamage \
-    xrandr
+    xdamage
 
 target.path = $${LIBDIR}
 docs.path = $${DOCDIR}/$${DESKTOP_TARGET}-desktop-$${VERSION}
