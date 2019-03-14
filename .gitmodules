@@ -1,3 +1,6 @@
 [submodule "src/power"]
 	path = src/power
 	url = https://github.com/rodlie/powerkit
+[submodule "src/fm"]
+	path = src/fm
+	url = https://github.com/rodlie/qtfm
