@@ -74,6 +74,17 @@ FORMS += SystemWindow.ui
 include(panel-plugins/panel-plugins.pri)
 include(desktop-plugins/desktop-plugins.pri)
 
+
+# qtcopydialog
+INCLUDEPATH += $${top_srcdir}/src/fm/libfm/qtcopydialog
+SOURCES += $${top_srcdir}/src/fm/libfm/qtcopydialog/qtcopydialog.cpp \
+           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtfilecopier.cpp
+HEADERS += $${top_srcdir}/src/fm/libfm/qtcopydialog/qtcopydialog.h \
+           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtfilecopier.h
+FORMS   += $${top_srcdir}/src/fm/libfm/qtcopydialog/qtcopydialog.ui \
+           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtoverwritedialog.ui \
+           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtotherdialog.ui
+
 #RESOURCES+= Lumina-DE.qrc
 
 #desktop.path = $${L_SESSDIR}
