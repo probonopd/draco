@@ -4,8 +4,9 @@
 //  Available under the 3-clause BSD license
 //  See the LICENSE file for full details
 //===========================================
-#ifndef _LUMINA_DESKTOP_SETTINGS_MENU_H
-#define _LUMINA_DESKTOP_SETTINGS_MENU_H
+
+#ifndef DESKTOP_SETTINGS_MENU_H
+#define DESKTOP_SETTINGS_MENU_H
 
 #include <QMenu>
 #include <QProcess>
@@ -13,15 +14,16 @@
 
 #include <LuminaXDG.h>
 
-class SettingsMenu : public QMenu{
-	Q_OBJECT
+class SettingsMenu : public QMenu
+{
+    Q_OBJECT
 public:
-	SettingsMenu();
-	~SettingsMenu();
-		
+    SettingsMenu();
+    ~SettingsMenu();
+
 private slots:
-	void UpdateMenu();
-	void runApp(QAction* act);
+    void UpdateMenu();
+    void runApp(QAction* act);
 
 };
 
