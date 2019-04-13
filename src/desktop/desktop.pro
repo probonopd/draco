@@ -40,7 +40,6 @@ SOURCES += \
     LPanel.cpp \
     LWinInfo.cpp \
     AppMenu.cpp \
-    SettingsMenu.cpp \
     SystemWindow.cpp \
     desktop-plugins/LDPlugin.cpp \
     $${top_srcdir}/src/power/lib/hotplug.cpp \
@@ -57,7 +56,6 @@ HEADERS += \
     LPanel.h \
     LWinInfo.h \
     AppMenu.h \
-    SettingsMenu.h \
     SystemWindow.h \
     panel-plugins/LPPlugin.h \
     panel-plugins/NewPP.h \
