@@ -12,7 +12,14 @@ RCC_DIR = $${DESTDIR}/.qrc_session
 
 INCLUDEPATH += $${top_srcdir}/src/lib
 LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
-!CONFIG(staticlib): QMAKE_RPATHDIR += $ORIGIN/../lib$${LIBSUFFIX}
 
 SOURCES += main.cpp session.cpp
 HEADERS  += session.h
+
+target.path = $${PREFIX}/bin
+xinit.path = $${XINITDIR}
+xinit.files = $${top_srcdir}/share/xinit/xinitrc.draco
+xsessions.path = $${XSESSIONSDIR}
+xsessions.files = $${top_srcdir}/share/xsessions/draco.desktop
+
+INSTALLS += target xinit xsessions
