@@ -4,3 +4,6 @@
 [submodule "src/fm"]
 	path = src/fm
 	url = https://github.com/rodlie/qtfm
+[submodule "src/hotkey"]
+	path = src/hotkey
+	url = https://github.com/rodlie/QHotkey

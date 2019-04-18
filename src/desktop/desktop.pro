@@ -82,6 +82,15 @@ FORMS   += $${top_srcdir}/src/fm/libfm/qtcopydialog/qtcopydialog.ui \
            $${top_srcdir}/src/fm/libfm/qtcopydialog/qtoverwritedialog.ui \
            $${top_srcdir}/src/fm/libfm/qtcopydialog/qtotherdialog.ui
 
+# qthotkey
+INCLUDEPATH += $${top_srcdir}/src/hotkey/QHotkey
+SOURCES += \
+    $${top_srcdir}/src/hotkey/QHotkey/qhotkey.cpp \
+    $${top_srcdir}/src/hotkey/QHotkey/qhotkey_x11.cpp
+HEADERS += \
+    $${top_srcdir}/src/hotkey/QHotkey/qhotkey.h \
+    $${top_srcdir}/src/hotkey/QHotkey/qhotkey_p.h
+
 
 RESOURCES += desktop.qrc
 
