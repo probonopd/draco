@@ -182,9 +182,28 @@ public:
         }
         return result;
     }
+    static void themeEngineCheckConf()
+    {
+        QString conf = QString("%1/.config/qt5ct/qt5ct.conf").arg(QDir::homePath());
+        if (!QFile::exists(conf)) {
+            qDebug() << "QT5CT CONF MISSING!";
+            QFile file(conf);
+            QFile def(":/theme/qt5ct.conf");
+            if (def.open(QIODevice::ReadOnly|QIODevice::Text)) {
+                qDebug() << "OPEN FALLBACK QT5CT CONF";
+                if (file.open(QIODevice::WriteOnly|QIODevice::Text)) {
+                    file.write(def.readAll());
+                    qDebug() << "WRITE NEW QT5CT CONF";
+                    file.close();
+                }
+                def.close();
+            }
+        }
+    }
     static void checkConfigs()
     {
         xdgOpenCheck();
+        themeEngineCheckConf();
     }
 };
 
