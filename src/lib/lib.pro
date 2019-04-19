@@ -42,6 +42,8 @@ SOURCES += \
     ResizeMenu.cpp \
     XDGMime.cpp
 
+RESOURCES += $${top_srcdir}/share/share.qrc
+
 PKGCONFIG += \
     xcb \
     xcb-xinput \

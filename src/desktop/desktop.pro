@@ -12,6 +12,7 @@ RCC_DIR = $${DESTDIR}/.qrc_desktop
 
 INCLUDEPATH += $${top_srcdir}/src/lib $${top_srcdir}/src/power/lib
 LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
+CONFIG(staticlib) : RESOURCES += $${top_srcdir}/share/share.qrc
 
 PKGCONFIG += xcb-atom xrandr x11
 

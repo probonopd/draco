@@ -16,6 +16,8 @@ LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
 SOURCES += main.cpp session.cpp
 HEADERS  += session.h
 
+CONFIG(staticlib) : RESOURCES += $${top_srcdir}/share/share.qrc
+
 target.path = $${PREFIX}/bin
 xinit.path = $${XINITDIR}
 xinit.files = $${top_srcdir}/share/xinit/xinitrc.draco
