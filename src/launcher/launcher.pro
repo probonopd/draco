@@ -22,6 +22,9 @@ HEADERS += \
     $${top_srcdir}/src/fm/libfm/properties.h \
     $${top_srcdir}/src/fm/libfm/fileutils.h
 
+INCLUDEPATH += $${top_srcdir}/src/lib
+LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
+
 DESTDIR = $${top_builddir}/bin
 OBJECTS_DIR = $${DESTDIR}/.obj_launcher
 MOC_DIR = $${DESTDIR}/.moc_launcher
