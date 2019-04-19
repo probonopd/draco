@@ -156,6 +156,36 @@ public:
         QString reconf = QString("%1 --reconfigure").arg(windowManagerCmdStart());
         return reconf;
     }
+    static const QString dracoStyleConf()
+    {
+        QString style = QString("%1/draco.qss").arg(configDir());
+        if (!QFile::exists(style)) { return ":/theme/draco.qss"; }
+        return style;
+    }
+    static const QString panelStyleSheet()
+    {
+        QString result;
+        QFile qss(dracoStyleConf());
+        if (qss.open(QIODevice::ReadOnly|QIODevice::Text)) {
+            result = qss.readAll();
+            qss.close();
+        }
+        return result;
+    }
+    static const QString desktopStyleSheet()
+    {
+        QString result;
+        QFile qss(dracoStyleConf());
+        if (qss.open(QIODevice::ReadOnly|QIODevice::Text)) {
+            result = qss.readAll();
+            qss.close();
+        }
+        return result;
+    }
+    static void checkConfigs()
+    {
+        xdgOpenCheck();
+    }
 };
 
 #endif // COMMON_H
