@@ -21,6 +21,10 @@ public:
     Draco() {}
     virtual ~Draco() {}
 
+    static const QString launcherApp()
+    {
+        return QString("%1-launcher").arg(DESKTOP_APP);
+    }
     static const QString sessionFile()
     {
         return QString("%1/.%2-desktop-session")
