@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QDirIterator>
+#include <QApplication>
 
 #define DE_SESSION_SETTINGS "sessionsettings"
 #define DE_DESKTOP_SETTINGS "desktopsettings"
@@ -100,6 +101,60 @@ public:
         result << "/usr/share/applications" << "/usr/local/share/applications";
         result << "/usr/pkg/share/applications";
         return result;
+    }
+    static bool xdgOpenCheck()
+    {
+        // "replace" xdg-open with draco-launcher
+        QString shadowPath =  QString("%1/bin").arg(configDir());
+        QString shadowXDG = QString("%1/xdg-open").arg(shadowPath);
+        if (!QFile::exists(shadowPath)) {
+            qDebug() << "create shadow bin dir" << shadowPath;
+            QDir shadowDir(shadowPath);
+            shadowDir.mkpath(shadowPath);
+        }
+        if (!QFile::exists(shadowXDG)) {
+            qDebug() << "create shadow xdg-open" << shadowXDG;
+            QFile symlink(QString("%1/%2").arg(qApp->applicationDirPath()).arg(launcherApp()));
+            if (!symlink.link(shadowXDG)) {
+                qDebug() << "FAILED TO CREATE XDG-OPEN SYMLINK!";
+                return false;
+            }
+        }
+        return true;
+    }
+    static const QString windowManager()
+    {
+        QString wm = "openbox";
+        return wm;
+    }
+    static const QString windowManagerConf()
+    {
+        QString conf = QString("%1/rc.xml").arg(configDir());
+        if (!QFile::exists(conf)) {
+            qDebug() << "RC XML MISSING!";
+            QFile rc(conf);
+            QFile def(":/theme/rc.xml");
+            if (def.open(QIODevice::ReadOnly|QIODevice::Text)) {
+                qDebug() << "OPEN FALLBACK RC XML";
+                if (rc.open(QIODevice::WriteOnly|QIODevice::Text)) {
+                    rc.write(def.readAll());
+                    qDebug() << "WRITE NEW RC XML";
+                    rc.close();
+                }
+                def.close();
+            }
+        }
+        return conf;
+    }
+    static const QString windowManagerCmdStart()
+    {
+        QString cmd = QString("%1 --config-file %2").arg(windowManager()).arg(windowManagerConf());
+        return cmd;
+    }
+    static const QString windowManagerCmdReConf()
+    {
+        QString reconf = QString("%1 --reconfigure").arg(windowManagerCmdStart());
+        return reconf;
     }
 };
 
