@@ -200,10 +200,51 @@ public:
             }
         }
     }
+    static void checkGtk2Conf()
+    {
+        QString conf = QString("%1/.gtkrc-2.0").arg(QDir::homePath());
+        if (!QFile::exists(conf)) {
+            qDebug() << "GTK2 CONF MISSING!";
+            QFile file(conf);
+            QFile def(":/theme/gtkrc-2.0");
+            if (def.open(QIODevice::ReadOnly|QIODevice::Text)) {
+                qDebug() << "OPEN FALLBACK GTK2 CONF";
+                if (file.open(QIODevice::WriteOnly|QIODevice::Text)) {
+                    file.write(def.readAll());
+                    qDebug() << "WRITE NEW GTK2 CONF";
+                    file.close();
+                }
+                def.close();
+            }
+        }
+    }
+    static void checkGtk3Conf()
+    {
+        QString gtkdir = QString("%1/.config/gtk-3.0").arg(QDir::homePath());
+        QString conf = QString("%1/%2/settings.ini").arg(QDir::homePath().arg(gtkdir));
+        if (!QFile::exists(conf)) {
+            QDir dir(gtkdir);
+            if (!dir.exists()) { dir.mkpath(gtkdir); }
+            qDebug() << "GTK3 CONF MISSING!";
+            QFile file(conf);
+            QFile def(":/theme/settings.ini");
+            if (def.open(QIODevice::ReadOnly|QIODevice::Text)) {
+                qDebug() << "OPEN FALLBACK GTK3 CONF";
+                if (file.open(QIODevice::WriteOnly|QIODevice::Text)) {
+                    file.write(def.readAll());
+                    qDebug() << "WRITE NEW GTK3 CONF";
+                    file.close();
+                }
+                def.close();
+            }
+        }
+    }
     static void checkConfigs()
     {
         xdgOpenCheck();
         themeEngineCheckConf();
+        checkGtk2Conf();
+        checkGtk3Conf();
     }
 };
 
