@@ -221,7 +221,7 @@ public:
     static void checkGtk3Conf()
     {
         QString gtkdir = QString("%1/.config/gtk-3.0").arg(QDir::homePath());
-        QString conf = QString("%1/%2/settings.ini").arg(QDir::homePath().arg(gtkdir));
+        QString conf = QString("%1/%2/settings.ini").arg(QDir::homePath()).arg(gtkdir);
         if (!QFile::exists(conf)) {
             QDir dir(gtkdir);
             if (!dir.exists()) { dir.mkpath(gtkdir); }
