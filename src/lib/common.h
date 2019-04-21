@@ -26,6 +26,10 @@ public:
     {
         return QString("%1-launcher").arg(DESKTOP_APP);
     }
+    static const QString terminalApp()
+    {
+        return "qterminal";
+    }
     static const QString sessionFile()
     {
         return QString("%1/.%2-desktop-session")

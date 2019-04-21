@@ -29,7 +29,7 @@ CONFIG += link_pkgconfig
 QT_CONFIG -= no-pkg-config
 
 CONFIG(release, debug|release) {
-    CONFIG += staticlib
+    !CONFIG(no_static): CONFIG += staticlib
     DEFINES += QT_NO_DEBUG_OUTPUT
 }
 
