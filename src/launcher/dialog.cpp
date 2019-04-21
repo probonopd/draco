@@ -126,15 +126,21 @@ void Dialog::handleUserInput(QString input)
 
 void Dialog::handleUserEnter()
 {
+    QString cmd;
     if (appSuggestions->count()>0) {
-        QString cmd = appSuggestions->item(0)->data(LIST_EXE).toString();
+        cmd = appSuggestions->item(0)->data(LIST_EXE).toString();
         if (appSuggestions->item(0)->data(LIST_TERM).toBool()) {
             cmd = QString("%1 -e  \"%2\"").arg(getTerminal()).arg(cmd);
         }
-        QProcess::startDetached(cmd);
-    } else {
-        QProcess::startDetached(userInput->text());
-    }
+    } else { cmd = userInput->text(); }
+    if (cmd.contains("google-chrome") || cmd.contains("chromium")) {
+        setenv("DESKTOP_SESSION", "xfce", 1);
+        setenv("XDG_CURRENT_DESKTOP", "xfce", 1);
+        QProcess proc;
+        proc.startDetached(cmd);
+        setenv("DESKTOP_SESSION", DESKTOP_APP_NAME, 1);
+        setenv("XDG_CURRENT_DESKTOP", DESKTOP_APP_NAME, 1);
+    } else { QProcess::startDetached(cmd); }
     close();
 }
 
@@ -145,7 +151,14 @@ void Dialog::handleAppClicked(QListWidgetItem *app)
     if (app->data(LIST_TERM).toBool()) {
         cmd = QString("%1 -e  \"%2\"").arg(getTerminal()).arg(cmd);
     }
-    QProcess::startDetached(cmd);
+    if (cmd.contains("google-chrome") || cmd.contains("chromium")) {
+        setenv("DESKTOP_SESSION", "xfce", 1);
+        setenv("XDG_CURRENT_DESKTOP", "xfce", 1);
+        QProcess proc;
+        proc.startDetached(cmd);
+        setenv("DESKTOP_SESSION", DESKTOP_APP_NAME, 1);
+        setenv("XDG_CURRENT_DESKTOP", DESKTOP_APP_NAME, 1);
+    } else { QProcess::startDetached(cmd); }
     close();
 }
 
