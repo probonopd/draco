@@ -274,7 +274,8 @@ public:
                    mime.endsWith("disk-image") ||
                    mime.endsWith("saturn-rom") ||
                    mime.endsWith("wii-rom") ||
-                   mime.endsWith("gamecube-rom")) {
+                   mime.endsWith("gamecube-rom") ||
+                   mime.endsWith("appimage")) {
             result = "media-optical";
         } else if (mime.contains("office")) {
             if (mime.contains("document")) {
