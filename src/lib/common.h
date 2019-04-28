@@ -309,8 +309,28 @@ public:
         } else {
             result = "text-x-generic";
         }
-        if (result.isEmpty()) { result = mime; }
+        if (result.isEmpty()) { return mime; }
         return  result;
+    }
+    static const QString filterIconName(const QString &name)
+    {
+        QString result;
+        if (name == "xscreensaver") { result = "preferences-desktop-screensaver"; }
+        else if (name == "xine") { result = "applications-multimedia"; }
+        else if (name == "cups") { result = "printer"; }
+        else if (name == "/usr/share/icons/Humanity/devices/48/printer.svg") { result = "printer"; }
+        else if (name == "QtIcon") { result = "qt-logo"; }
+        else if (name.contains("distcc")) { result = "utilities-system-monitor"; }
+        else if (name == "system-reboot") { result = "system-shutdown"; }
+        else if (name == "system") { result = "computer"; }
+        else if (name == "dialog-cancel") { result = "process-stop"; }
+        else if (name == "dialog") { result = "user-available"; }
+        else if (name == "preferences-desktop-icons") { result = "preferences-desktop-theme"; }
+        else if (name == "transform") { result = "object-rotate-left"; }
+        else if (name == "transform-scale") { result = "view-fullscreen"; }
+        else if (name == "transform-move") { result = "view-restore"; }
+        if (result.isEmpty()) { return name; }
+        return result;
     }
 };
 
