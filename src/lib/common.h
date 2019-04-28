@@ -250,6 +250,67 @@ public:
         checkGtk2Conf();
         checkGtk3Conf();
     }
+    static const QString getProperMime(const QString &mime)
+    {
+        QString result;
+        if (mime.startsWith("image")) {
+            result = "image-x-generic";
+        } else if(mime.startsWith("audio")) {
+            result = "audio-x-generic";
+        } else if(mime.startsWith("video")) {
+            result = "video-x-generic";
+        } else if (mime.contains("-tar") ||
+                   mime.contains("compressed") ||
+                   mime.contains("xz") ||
+                   mime.contains("bz2") ||
+                   mime.contains("gz") ||
+                   mime.contains("rar") ||
+                   mime.contains("zip") ||
+                   mime.contains("rpm") ||
+                   mime.contains("deb")) {
+            result = "package-x-generic";
+        } else if (mime.endsWith("cd-image") ||
+                   mime.endsWith("apple-diskimage") ||
+                   mime.endsWith("disk-image") ||
+                   mime.endsWith("saturn-rom") ||
+                   mime.endsWith("wii-rom") ||
+                   mime.endsWith("gamecube-rom")) {
+            result = "media-optical";
+        } else if (mime.contains("office")) {
+            if (mime.contains("document")) {
+                result = "x-office-document";
+            }
+            else if (mime.contains("drawing")) {
+                result = "x-office-drawing";
+            }
+            else if (mime.contains("presentation")) {
+                result = "x-office-presentation";
+            }
+            else if (mime.contains("spreadsheet")) {
+                result = "x-office-spreadsheet";
+            }
+        } else if (mime.startsWith("text")) {
+            if (mime.contains("python") ||
+                mime.contains("perl") ||
+                mime.contains("php") ||
+                mime.contains("ruby") ||
+                mime.contains("script") ||
+                mime.contains("shell"))
+            {
+                result = "text-x-script";
+            } else if (mime.contains("html")) {
+                result = "text-html";
+            } else {
+                result = "text-x-generic";
+            }
+        } else if (mime.endsWith("-executable")) {
+            result = "application-x-executable";
+        } else {
+            result = "text-x-generic";
+        }
+        if (result.isEmpty()) { result = mime; }
+        return  result;
+    }
 };
 
 #endif // COMMON_H
