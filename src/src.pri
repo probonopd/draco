@@ -37,3 +37,8 @@ CONFIG(release, debug|release) {
 
 #DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+# check for adwaita
+PKGCONFIG += adwaita-icon-theme
+ICON_VERSION = $$system(pkg-config --modversion adwaita-icon-theme)
+greaterThan(ICON_VERSION, 3.30.0): error("Adwaita $${ICON_VERSION} is broken, please use 3.30.0.")
