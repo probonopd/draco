@@ -57,6 +57,15 @@ FORMS   += fm/libfm/qtcopydialog/qtcopydialog.ui \
            fm/libfm/qtcopydialog/qtoverwritedialog.ui \
            fm/libfm/qtcopydialog/qtotherdialog.ui
 
+# qthotkey
+INCLUDEPATH += hotkey/QHotkey
+SOURCES += \
+    hotkey/QHotkey/qhotkey.cpp \
+    hotkey/QHotkey/qhotkey_x11.cpp
+HEADERS += \
+    hotkey/QHotkey/qhotkey.h \
+    hotkey/QHotkey/qhotkey_p.h
+
 # xcb
 PKGCONFIG += \
     xcb \

@@ -5,5 +5,5 @@
 	path = src/lib/fm
 	url = https://github.com/rodlie/qtfm
 [submodule "src/hotkey"]
-	path = src/hotkey
+	path = src/lib/hotkey
 	url = https://github.com/rodlie/QHotkey

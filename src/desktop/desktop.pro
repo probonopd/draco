@@ -10,7 +10,13 @@ OBJECTS_DIR = $${DESTDIR}/.obj_desktop
 MOC_DIR = $${DESTDIR}/.moc_desktop
 RCC_DIR = $${DESTDIR}/.qrc_desktop
 
-INCLUDEPATH += $${top_srcdir}/src/lib $${top_srcdir}/src/lib/fm/libfm/qtcopydialog $${top_srcdir}/src/power/lib
+INCLUDEPATH += \
+    $${top_srcdir}/src/lib \
+    $${top_srcdir}/src/lib/fm/libfm/qtcopydialog \
+    $${top_srcdir}/src/power/lib \
+    $${top_srcdir}/src/lib/hotkey/QHotkey
+
+
 LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}
 CONFIG(staticlib) : RESOURCES += $${top_srcdir}/share/share.qrc
 
@@ -73,14 +79,6 @@ include(panel-plugins/panel-plugins.pri)
 include(desktop-plugins/desktop-plugins.pri)
 
 
-# qthotkey
-INCLUDEPATH += $${top_srcdir}/src/hotkey/QHotkey
-SOURCES += \
-    $${top_srcdir}/src/hotkey/QHotkey/qhotkey.cpp \
-    $${top_srcdir}/src/hotkey/QHotkey/qhotkey_x11.cpp
-HEADERS += \
-    $${top_srcdir}/src/hotkey/QHotkey/qhotkey.h \
-    $${top_srcdir}/src/hotkey/QHotkey/qhotkey_p.h
 
 
 RESOURCES += desktop.qrc
