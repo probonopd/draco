@@ -11,8 +11,8 @@ MOC_DIR = $${DESTDIR}/.moc_config
 RCC_DIR = $${DESTDIR}/.qrc_config
 
 INCLUDEPATH += $${top_srcdir}/src/lib
-LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
-!CONFIG(staticlib): QMAKE_RPATHDIR += $ORIGIN/../lib$${LIBSUFFIX}
+LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}
+#!CONFIG(staticlib): QMAKE_RPATHDIR += $ORIGIN/../lib$${LIBSUFFIX}
 
 CONFIG(staticlib) {
     PKGCONFIG += \

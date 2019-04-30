@@ -11,7 +11,7 @@ MOC_DIR = $${DESTDIR}/.moc_session
 RCC_DIR = $${DESTDIR}/.qrc_session
 
 INCLUDEPATH += $${top_srcdir}/src/lib
-LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
+LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}
 
 SOURCES += main.cpp session.cpp
 HEADERS  += session.h

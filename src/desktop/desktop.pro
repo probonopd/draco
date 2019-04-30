@@ -10,8 +10,8 @@ OBJECTS_DIR = $${DESTDIR}/.obj_desktop
 MOC_DIR = $${DESTDIR}/.moc_desktop
 RCC_DIR = $${DESTDIR}/.qrc_desktop
 
-INCLUDEPATH += $${top_srcdir}/src/lib $${top_srcdir}/src/power/lib
-LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}Desktop
+INCLUDEPATH += $${top_srcdir}/src/lib $${top_srcdir}/src/lib/fm/libfm/qtcopydialog $${top_srcdir}/src/power/lib
+LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}
 CONFIG(staticlib) : RESOURCES += $${top_srcdir}/share/share.qrc
 
 PKGCONFIG += xcb-atom xrandr x11
@@ -72,16 +72,6 @@ FORMS += SystemWindow.ui
 include(panel-plugins/panel-plugins.pri)
 include(desktop-plugins/desktop-plugins.pri)
 
-
-# qtcopydialog
-INCLUDEPATH += $${top_srcdir}/src/fm/libfm/qtcopydialog
-SOURCES += $${top_srcdir}/src/fm/libfm/qtcopydialog/qtcopydialog.cpp \
-           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtfilecopier.cpp
-HEADERS += $${top_srcdir}/src/fm/libfm/qtcopydialog/qtcopydialog.h \
-           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtfilecopier.h
-FORMS   += $${top_srcdir}/src/fm/libfm/qtcopydialog/qtcopydialog.ui \
-           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtoverwritedialog.ui \
-           $${top_srcdir}/src/fm/libfm/qtcopydialog/qtotherdialog.ui
 
 # qthotkey
 INCLUDEPATH += $${top_srcdir}/src/hotkey/QHotkey

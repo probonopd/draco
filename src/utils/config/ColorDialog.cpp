@@ -56,7 +56,7 @@ void ColorDialog::saveColors(){
     QTreeWidgetItem *it = ui->tree_color->topLevelItem(i);
     contents << it->whatsThis(0)+"="+it->text(1);
   }
-  bool ok = LTHEME::saveLocalColors(name, contents);
+  bool ok = false;//LTHEME::saveLocalColors(name, contents);
   if(!ok){ qDebug() << "Could not save colors:" << name; }
 }
 

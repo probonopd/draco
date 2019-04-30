@@ -43,11 +43,11 @@ void ThemeDialog::loadTheme(){
 }
 
 void ThemeDialog::saveTheme(){
-  QString name = ui->line_name->text();
+  /*QString name = ui->line_name->text();
   QStringList contents = ui->text_file->toPlainText().split("\n");
   LTHEME::saveLocalTheme(name, contents);
   ui->push_save->setEnabled(false);
-  ui->push_apply->setEnabled(false);
+  ui->push_apply->setEnabled(false);*/
 }
 
 void ThemeDialog::themeChanged(){

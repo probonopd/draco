@@ -1,3 +1,4 @@
+
 DESKTOP_TARGET = "draco"
 DESKTOP_TARGET_NAME = "Draco"
 DESKTOP_DOMAIN = "dracolinux.org"
@@ -7,10 +8,10 @@ DESKTOP_MINOR = 9
 DESKTOP_PATCH = 0
 
 VERSION = $${DESKTOP_MAJOR}.$${DESKTOP_MINOR}.$${DESKTOP_PATCH}
-
 DEFINES += DESKTOP_APP=\"\\\"$${DESKTOP_TARGET}\\\"\"
 DEFINES += DESKTOP_APP_NAME=\"\\\"$${DESKTOP_TARGET_NAME}\\\"\"
 DEFINES += DESKTOP_APP_VERSION=\"\\\"$${VERSION}\\\"\"
+DEFINES += DESKTOP_APP_GIT=\"\\\"$${GIT}\\\"\"
 DEFINES += DESKTOP_APP_DOMAIN=\"\\\"$${DESKTOP_DOMAIN}\\\"\"
 
 isEmpty(PREFIX) {
@@ -29,7 +30,7 @@ CONFIG += link_pkgconfig
 QT_CONFIG -= no-pkg-config
 
 CONFIG(release, debug|release) {
-    !CONFIG(no_static): CONFIG += staticlib
+    #!CONFIG(no_static): CONFIG += staticlib
     DEFINES += QT_NO_DEBUG_OUTPUT
 }
 
@@ -41,4 +42,4 @@ CONFIG(release, debug|release) {
 # check for adwaita
 PKGCONFIG += adwaita-icon-theme
 ICON_VERSION = $$system(pkg-config --modversion adwaita-icon-theme)
-greaterThan(ICON_VERSION, 3.28.0): warning("ADWAITA $${ICON_VERSION} HAS MISSING ICONS, PLEASE USE A OLDER VERSION IF POSSIBLE!")
+greaterThan(ICON_VERSION, 3.28.0): warning("ADWAITA $${ICON_VERSION} IS BROKEN, PLEASE USE A OLDER VERSION IF POSSIBLE!")
