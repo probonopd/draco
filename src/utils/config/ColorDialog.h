@@ -23,7 +23,7 @@
 #include <QDebug>
 
 #include <LuminaXDG.h>
-#include <LuminaThemes.h>
+//#include <LuminaThemes.h>
 
 #include "LPlugins.h"
 
