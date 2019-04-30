@@ -41,4 +41,4 @@ CONFIG(release, debug|release) {
 # check for adwaita
 PKGCONFIG += adwaita-icon-theme
 ICON_VERSION = $$system(pkg-config --modversion adwaita-icon-theme)
-greaterThan(ICON_VERSION, 3.30.0): error("Adwaita $${ICON_VERSION} is broken, please use 3.30.0.")
+greaterThan(ICON_VERSION, 3.28.0): warning("ADWAITA $${ICON_VERSION} HAS MISSING ICONS, PLEASE USE A OLDER VERSION IF POSSIBLE!")
