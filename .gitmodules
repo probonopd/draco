@@ -1,5 +1,5 @@
 [submodule "src/power"]
-	path = src/power
+	path = src/lib/power
 	url = https://github.com/rodlie/powerkit
 [submodule "src/fm"]
 	path = src/lib/fm

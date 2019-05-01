@@ -1,6 +1,6 @@
 include($${top_srcdir}/src/src.pri)
 
-QT += network widgets x11extras concurrent dbus
+QT += network widgets x11extras concurrent
 
 TARGET = $${DESKTOP_TARGET}-desktop
 TEMPLATE = app
@@ -13,9 +13,8 @@ RCC_DIR = $${DESTDIR}/.qrc_desktop
 INCLUDEPATH += \
     $${top_srcdir}/src/lib \
     $${top_srcdir}/src/lib/fm/libfm/qtcopydialog \
-    $${top_srcdir}/src/power/lib \
     $${top_srcdir}/src/lib/hotkey/QHotkey
-
+#    $${top_srcdir}/src/power/lib \
 
 LIBS += -L$${top_builddir}/lib$${LIBSUFFIX} -l$${DESKTOP_TARGET_NAME}
 CONFIG(staticlib) : RESOURCES += $${top_srcdir}/share/share.qrc
@@ -33,11 +32,13 @@ SOURCES += \
     LWinInfo.cpp \
     AppMenu.cpp \
     SystemWindow.cpp \
-    desktop-plugins/LDPlugin.cpp \
-    $${top_srcdir}/src/power/lib/hotplug.cpp \
-    $${top_srcdir}/src/power/lib/screens.cpp \
-    $${top_srcdir}/src/power/lib/device.cpp \
-    $${top_srcdir}/src/power/lib/powerkit.cpp
+    desktop-plugins/LDPlugin.cpp
+
+
+#    $${top_srcdir}/src/power/lib/hotplug.cpp \
+#    $${top_srcdir}/src/power/lib/screens.cpp \
+#    $${top_srcdir}/src/power/lib/device.cpp \
+#    $${top_srcdir}/src/power/lib/powerkit.cpp
 
 HEADERS += \
     LXcbEventFilter.h \
@@ -53,11 +54,12 @@ HEADERS += \
     panel-plugins/NewPP.h \
     panel-plugins/LTBWidget.h \
     desktop-plugins/LDPlugin.h \
-    desktop-plugins/NewDP.h \
-    $${top_srcdir}/src/power/lib/hotplug.h \
-    $${top_srcdir}/src/power/lib/screens.h \
-    $${top_srcdir}/src/power/lib/device.h \
-    $${top_srcdir}/src/power/lib/powerkit.h
+    desktop-plugins/NewDP.h
+
+#    $${top_srcdir}/src/power/lib/hotplug.h \
+#    $${top_srcdir}/src/power/lib/screens.h \
+#    $${top_srcdir}/src/power/lib/device.h \
+#    $${top_srcdir}/src/power/lib/powerkit.h
 
 FORMS += SystemWindow.ui
 
