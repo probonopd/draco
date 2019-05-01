@@ -45,3 +45,5 @@ CONFIG(release, debug|release) {
 PKGCONFIG += adwaita-icon-theme
 ICON_VERSION = $$system(pkg-config --modversion adwaita-icon-theme)
 greaterThan(ICON_VERSION, 3.28.0): warning("ADWAITA $${ICON_VERSION} IS BROKEN, PLEASE USE A OLDER VERSION IF POSSIBLE!")
+
+!CONFIG(imadev): error("Not ready yet ;) Please wait until a proper release")
