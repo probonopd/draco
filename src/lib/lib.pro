@@ -27,7 +27,7 @@ HEADERS += \
     LFileInfo.h \
     ResizeMenu.h \
     XDGMime.h \
-    common.h
+    draco.h
 
 SOURCES += \
     DesktopSettings.cpp \
@@ -40,7 +40,8 @@ SOURCES += \
     LuminaXDG.cpp \
     LFileInfo.cpp \
     ResizeMenu.cpp \
-    XDGMime.cpp
+    XDGMime.cpp \
+    draco.cpp
 
 # misc config files etc
 RESOURCES += $${top_srcdir}/share/share.qrc
