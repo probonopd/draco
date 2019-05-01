@@ -1,9 +1,6 @@
 [submodule "src/power"]
 	path = src/lib/power
 	url = https://github.com/rodlie/powerkit
-[submodule "src/fm"]
-	path = src/lib/fm
-	url = https://github.com/rodlie/qtfm
 [submodule "src/hotkey"]
 	path = src/lib/hotkey
 	url = https://github.com/rodlie/QHotkey
