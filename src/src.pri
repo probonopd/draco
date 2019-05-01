@@ -14,6 +14,8 @@ DEFINES += DESKTOP_APP_VERSION=\"\\\"$${VERSION}\\\"\"
 DEFINES += DESKTOP_APP_GIT=\"\\\"$${GIT}\\\"\"
 DEFINES += DESKTOP_APP_DOMAIN=\"\\\"$${DESKTOP_DOMAIN}\\\"\"
 
+QT += core dbus
+
 isEmpty(PREFIX) {
     PREFIX = /usr/local
     isEmpty(ETCDIR) : ETCDIR = $${PREFIX}/etc

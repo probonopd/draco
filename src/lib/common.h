@@ -22,6 +22,35 @@ public:
     Draco() {}
     virtual ~Draco() {}
 
+    static const QString desktopSessionName()
+    {
+        return QString("%1.Desktop").arg(DESKTOP_APP_DOMAIN);
+    }
+    static const QString desktopSessionPath()
+    {
+        return QString("/Desktop");
+    }
+    static const QString desktopSessionFullPath()
+    {
+        return QString();
+        //return QString("%1/%2").arg(QString(DESKTOP_APP_DOMAIN)).arg(DESKTOP_APP_NAME);
+    }
+    static const QString xconfig()
+    {
+        return QString("%1-display-manager").arg(DESKTOP_APP);
+    }
+    static const QString storageApp()
+    {
+        return QString("%1-storage-manager").arg(DESKTOP_APP);
+    }
+    static const QString powerApp()
+    {
+        return QString("%1-power-manager").arg(DESKTOP_APP);
+    }
+    static const QString desktopApp()
+    {
+        return QString("%1-desktop").arg(DESKTOP_APP);
+    }
     static const QString launcherApp()
     {
         return QString("%1-launcher").arg(DESKTOP_APP);

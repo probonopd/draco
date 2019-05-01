@@ -22,7 +22,6 @@ HEADERS += \
     LInputDevice.h \
     LUtils.h \
     LuminaRandR.h \
-    LuminaSingleApplication.h \
     LuminaX11.h \
     LuminaXDG.h \
     LFileInfo.h \
@@ -37,7 +36,6 @@ SOURCES += \
     LInputDevice.cpp \
     LUtils.cpp \
     LuminaRandR-X11.cpp \
-    LuminaSingleApplication.cpp \
     LuminaX11.cpp \
     LuminaXDG.cpp \
     LFileInfo.cpp \
@@ -83,16 +81,19 @@ PKGCONFIG += \
 target.path = $${LIBDIR}
 docs.path = $${DOCDIR}/$${DESKTOP_TARGET}-desktop-$${VERSION}
 docs.files += $${top_srcdir}/docs/LICENSE $${top_srcdir}/docs/README.md
-includes.path = $${PREFIX}/include/$${DESKTOP_TARGET_NAME}/Desktop
-includes.files = $${HEADERS}
 
 # pkg-config
-CONFIG += create_prl no_install_prl create_pc
-QMAKE_PKGCONFIG_NAME = $${DESKTOP_TARGET_NAME}
-QMAKE_PKGCONFIG_DESCRIPTION = $${DESKTOP_TARGET_NAME} Library
-QMAKE_PKGCONFIG_LIBDIR = $$target.path
-QMAKE_PKGCONFIG_INCDIR = $${PREFIX}/include/$${DESKTOP_TARGET_NAME}
-QMAKE_PKGCONFIG_DESTDIR = pkgconfig
+CONFIG(install_headers) {
+    includes.path = $${PREFIX}/include/$${DESKTOP_TARGET_NAME}/Desktop
+    includes.files = $${HEADERS}
+    CONFIG += create_prl no_install_prl create_pc
+    QMAKE_PKGCONFIG_NAME = $${DESKTOP_TARGET_NAME}
+    QMAKE_PKGCONFIG_DESCRIPTION = $${DESKTOP_TARGET_NAME} Library
+    QMAKE_PKGCONFIG_LIBDIR = $$target.path
+    QMAKE_PKGCONFIG_INCDIR = $${PREFIX}/include/$${DESKTOP_TARGET_NAME}
+    QMAKE_PKGCONFIG_DESTDIR = pkgconfig
+    INSTALLS += includes
+}
 
 # install
-INSTALLS += target includes docs
+INSTALLS += target docs

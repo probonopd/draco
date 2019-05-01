@@ -22,20 +22,6 @@ CONFIG(staticlib) : RESOURCES += $${top_srcdir}/share/share.qrc
 
 PKGCONFIG += xcb-atom xrandr x11
 
-CONFIG(staticlib) {
-    PKGCONFIG += \
-        xcb \
-        xcb-xinput \
-        xcb-randr \
-        xcb-ewmh \
-        xcb-icccm \
-        xcb-image \
-        xcb-composite \
-        xcb-damage \
-        xcb-util \
-        xdamage
-}
-
 SOURCES += \
     main.cpp \
     LXcbEventFilter.cpp \
