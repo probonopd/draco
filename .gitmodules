@@ -1,3 +1,0 @@
-[submodule "src/hotkey"]
-	path = src/lib/hotkey
-	url = https://github.com/rodlie/QHotkey
