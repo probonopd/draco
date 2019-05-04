@@ -3,3 +3,7 @@
 
 @import "{{ site.theme }}";
 
+h1#project_title {
+  background: url(https://raw.githubusercontent.com/rodlie/draco/master/src/desktop/defaults/draco-logo.png) no-repeat;
+  padding-left:128px;
+}
