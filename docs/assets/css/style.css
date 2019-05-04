@@ -1,9 +1,0 @@
----
----
-
-@import "{{ site.theme }}";
-
-#header_wrap .inner{
-  background: url(https://raw.githubusercontent.com/rodlie/draco/master/src/desktop/defaults/draco-logo.png) no-repeat red;
-  padding:50px 10px 30px 10px;
-}
