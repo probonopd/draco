@@ -5,7 +5,7 @@
 # See the LICENSE file for full details
 */
 
-#include "dialog.h"
+#include "org.dracolinux.Power.KeyboardDialog.h"
 #include <QVBoxLayout>
 #include <QIcon>
 #include <QDebug>
