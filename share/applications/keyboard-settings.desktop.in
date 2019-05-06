@@ -1,9 +1,0 @@
-[Desktop Entry]
-Exec=@PROJECT_NAME@-keyboard-settings
-Icon=input-keyboard
-Terminal=false
-Type=Application
-StartupNotify=false
-Categories=Settings;
-Name=Keyboard Configuration
-OnlyShowIn=Draco;
