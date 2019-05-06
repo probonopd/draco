@@ -6,8 +6,9 @@
 //===========================================
 #include "page_interface_menu.h"
 #include "ui_page_interface_menu.h"
-#include "../AppDialog.h"
+#include "AppDialog.h"
 #include "../GetPluginDialog.h"
+#include <QSettings>
 //#include "../ScriptDialog.h"
 //==========
 //    PUBLIC

@@ -12,14 +12,14 @@
 #include <QLabel>
 #include <QPixmap>
 
-Dialog::Dialog(QWidget *parent)
+KeyboardDialog::KeyboardDialog(QWidget *parent)
     : QDialog(parent)
-    , layoutBox(0)
-    , variantBox(0)
-    , modelBox(0)
+    , layoutBox(nullptr)
+    , variantBox(nullptr)
+    , modelBox(nullptr)
 {
     setAttribute(Qt::WA_QuitOnClose, true);
-    setWindowTitle(tr("Keyboard Settings"));
+    setWindowTitle(tr("Keyboard Configuration"));
 
     QHBoxLayout *layout = new QHBoxLayout(this);
     QWidget *containerWidget = new QWidget(this);
@@ -27,6 +27,7 @@ Dialog::Dialog(QWidget *parent)
 
     QLabel *keyboardLabel = new QLabel(this);
     QIcon keyboardIcon = QIcon::fromTheme("input-keyboard");
+    setWindowIcon(keyboardIcon);
     keyboardLabel->setPixmap(keyboardIcon.pixmap(QSize(64, 64)));
     keyboardLabel->setMinimumSize(QSize(64, 64));
     keyboardLabel->setMaximumSize(QSize(64, 64));
@@ -38,6 +39,10 @@ Dialog::Dialog(QWidget *parent)
     layoutBox = new QComboBox(this);
     variantBox = new QComboBox(this);
     modelBox = new QComboBox(this);
+
+    layoutBox->setMaximumWidth(200);
+    variantBox->setMaximumWidth(200);
+    modelBox->setMaximumWidth(200);
 
     QWidget *containerWidgetBoxLayout = new QWidget(this);
     QHBoxLayout *containerLayoutBoxLayout = new QHBoxLayout(containerWidgetBoxLayout);
@@ -84,10 +89,10 @@ Dialog::Dialog(QWidget *parent)
     connect(modelBox, SIGNAL(currentIndexChanged(int)), this, SLOT(handleModelChanged(int)));
 }
 
-void Dialog::populateBox(QComboBox *box, xkbType type)
+void KeyboardDialog::populateBox(QComboBox *box, xkbType type)
 {
-    if (box==NULL) { return; }
-    QStringList xkb = Common::parseXKB(type);
+    if (box==nullptr) { return; }
+    QStringList xkb = KeyboardCommon::parseXKB(type);
     box->clear();
     box->addItem(QIcon::fromTheme("keyboard"), QObject::tr("System default"));
     for (int i=0;i<xkb.size();i++) {
@@ -100,38 +105,38 @@ void Dialog::populateBox(QComboBox *box, xkbType type)
     setCurrentIndex(box, type);
 }
 
-void Dialog::populateBoxes()
+void KeyboardDialog::populateBoxes()
 {
     populateBox(layoutBox, xkbLayout);
     populateBox(variantBox, xkbVariant);
     populateBox(modelBox, xkbModel);
 }
 
-void Dialog::handleLayoutChanged(int index)
+void KeyboardDialog::handleLayoutChanged(int index)
 {
     if (index == -1) { return; }
     QString value = layoutBox->itemData(index).toString();
-    Common::saveKeyboard("layout", value);
-    Common::loadKeyboard();
+    KeyboardCommon::saveKeyboard("layout", value);
+    KeyboardCommon::loadKeyboard();
 }
 
-void Dialog::handleVariantChanged(int index)
+void KeyboardDialog::handleVariantChanged(int index)
 {
     if (index == -1) { return; }
     QString value = variantBox->itemData(index).toString();
-    Common::saveKeyboard("variant", value);
-    Common::loadKeyboard();
+    KeyboardCommon::saveKeyboard("variant", value);
+    KeyboardCommon::loadKeyboard();
 }
 
-void Dialog::handleModelChanged(int index)
+void KeyboardDialog::handleModelChanged(int index)
 {
     if (index == -1) { return; }
     QString value = modelBox->itemData(index).toString();
-    Common::saveKeyboard("model", value);
-    Common::loadKeyboard();
+    KeyboardCommon::saveKeyboard("model", value);
+    KeyboardCommon::loadKeyboard();
 }
 
-void Dialog::setCurrentIndex(QComboBox *box, xkbType type)
+void KeyboardDialog::setCurrentIndex(QComboBox *box, xkbType type)
 {
     QString kbType;
     switch (type) {
@@ -144,9 +149,8 @@ void Dialog::setCurrentIndex(QComboBox *box, xkbType type)
     case xkbModel:
         kbType = "model";
         break;
-    default:;
     }
-    QString value = Common::defaultKeyboard(kbType);
+    QString value = KeyboardCommon::defaultKeyboard(kbType);
     for (int i=0;i<box->count();i++) {
         if (box->itemData(i).toString() == value) { box->setCurrentIndex(i); }
     }

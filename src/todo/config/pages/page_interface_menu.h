@@ -6,7 +6,7 @@
 //===========================================
 #ifndef _LUMINA_CONFIG_PAGE_INTERFACE_MENU_H
 #define _LUMINA_CONFIG_PAGE_INTERFACE_MENU_H
-#include "../globals.h"
+//#include "../globals.h"
 #include "PageWidget.h"
 #include "../LPlugins.h"
 

@@ -5,18 +5,18 @@
 # See the LICENSE file for full details
 */
 
-#ifndef DIALOG_H
-#define DIALOG_H
+#ifndef KEYBOARD_DIALOG_H
+#define KEYBOARD_DIALOG_H
 
 #include <QDialog>
 #include <QComboBox>
-#include "common.h"
+#include "keyboard_common.h"
 
-class Dialog : public QDialog
+class KeyboardDialog : public QDialog
 {
     Q_OBJECT
 public:
-   explicit Dialog(QWidget *parent = NULL);
+   explicit KeyboardDialog(QWidget *parent = nullptr);
 private:
     QComboBox *layoutBox;
     QComboBox *variantBox;
@@ -30,4 +30,4 @@ private slots:
     void setCurrentIndex(QComboBox *box, xkbType type);
 };
 
-#endif // DIALOG_H
+#endif // KEYBOARD_DIALOG_H
