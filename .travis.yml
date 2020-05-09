@@ -17,3 +17,11 @@ script:
   - cd $CWD/build-release
   - bash -ex ../src/build-deb.sh
   - ls -lh
+
+after_success:
+  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+  - bash upload.sh *.deb
+  
+branches:
+  except:
+    - /^(?i:continuous)/
