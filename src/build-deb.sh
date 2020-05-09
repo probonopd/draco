@@ -2,6 +2,8 @@
 
 # This creates a deb for easy testing.
 # This deb is not made according to the Debian policies.
+# This is intentional, because Debian policy would require us to split up this
+# package into multiple packages, which would make everything more complicated.
 # Any improvement that does not make the build process more complicated is welcome.
 
 sudo rm -rf debian/ || true
