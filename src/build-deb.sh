@@ -19,13 +19,17 @@ echo "Package: ${PROGRAMNAME}
 Version: ${VERSION}
 Priority: optional
 Architecture: ${ARCH}
-Depends: libc, bash (>=4.0)
+Depends: libc, bash (>=4.0), qterminal, pnmixer, openbox, hicolor-icon-theme, xscreensaver, xdg-utils, openbox
 Installed-Size: ${INSTALLED_SIZE}
 Maintainer: No Name <noname@gmail.com>
 Description: Draco is a simple and lightweight desktop environment.
  While small still features XDG integration, freedesktop services and integration,
  power and storage management, desktop, panels, multi-monitor support and much more.
  Draco does not include any user applications." > debian/DEBIAN/control
+
+mkdir -p debian/usr/share/doc/${PROGRAMNAME}/
+echo "" | gzip -9 - -c -f > debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
+chmod 0644 debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
 
 sudo make DESTDIR=debian install
 
@@ -42,10 +46,6 @@ sudo find debian/usr/bin -type f -exec strip {} \;
 sudo find debian/usr/lib -type f -exec strip {} \;
 
 sudo chmod +x debian/etc/X11/xinit/xinitrc.draco
-
-mkdir -p debian/usr/share/doc/${PROGRAMNAME}/
-echo "" | gzip -9 - -c -f > debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
-chmod 0644 debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
 
 INSTALLED_SIZE=$(du -s debian/usr | awk '{x=$1/1024; i=int(x); if ((x-i)*10 >= 5) {f=1} else {f=0}; print i+f}')
 echo "size=${INSTALLED_SIZE}"
