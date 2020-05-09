@@ -25,6 +25,10 @@ if [  "$CXX" != "clang++" ] ; then
   exit 0
 fi
 
+VERSION=$(ls debian/usr/lib/x86_64-linux-gnu/libDraco.so.* | tail -n 1 | cut -d / -f 5 |  sed  -e 's|libDraco.so.||g')
+ARCH=amd64
+OUTPUT_FILENAME="${PROGRAMNAME}_${VERSION}_${ARCH}.deb"
+
 mkdir -v -p debian/DEBIAN
 echo "Package: ${PROGRAMNAME}
 Version: ${VERSION}
@@ -37,10 +41,6 @@ Description: Draco is a simple and lightweight desktop environment.
  While small still features XDG integration, freedesktop services and integration,
  power and storage management, desktop, panels, multi-monitor support and much more.
  Draco does not include any user applications." > debian/DEBIAN/control
- 
-VERSION=$(ls debian/usr/lib/x86_64-linux-gnu/libDraco.so.* | tail -n 1 | cut -d / -f 5 |  sed  -e 's|libDraco.so.||g')
-ARCH=amd64
-OUTPUT_FILENAME="${PROGRAMNAME}_${VERSION}_${ARCH}.deb"
 
 find debian/usr/bin -type f -exec strip {} \;
 find debian/usr/lib -type f -exec strip {} \;
