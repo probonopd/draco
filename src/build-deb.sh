@@ -15,7 +15,7 @@ mkdir -v -p debian/DEBIAN
 sudo make DESTDIR=debian install
 
 # Only build deb for one of the builds
-if [  "$CXX" != "clang" ] ; then
+if [  "$CXX" != "clang++" ] ; then
   exit 0
 fi
 
