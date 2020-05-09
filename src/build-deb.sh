@@ -13,6 +13,12 @@ make -j ${nproc}
 PROGRAMNAME=draco
 mkdir -v -p debian/DEBIAN
 sudo make DESTDIR=debian install
+
+# Only build deb for one of the builds
+if [  "$CXX" != "clang" ] ; then
+  exit 0
+fi
+
 VERSION=$(ls debian/usr/lib/x86_64-linux-gnu/libDraco.so.* | tail -n 1 | cut -d / -f 5 |  sed  -e 's|libDraco.so.||g')
 ARCH=amd64
 OUTPUT_FILENAME="${PROGRAMNAME}_${VERSION}_${ARCH}.deb"
@@ -20,7 +26,7 @@ OUTPUT_FILENAME="${PROGRAMNAME}_${VERSION}_${ARCH}.deb"
 sudo find debian/usr/bin -type f -exec strip {} \;
 sudo find debian/usr/lib -type f -exec strip {} \;
 
-sudo chmod +x etc/X11/xinit/xinitrc.draco
+sudo chmod +x debian/etc/X11/xinit/xinitrc.draco
 
 echo "" | gzip -9 - -c -f > debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
 chmod 0644 debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
