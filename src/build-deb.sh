@@ -19,7 +19,7 @@ echo "Package: ${PROGRAMNAME}
 Version: ${VERSION}
 Priority: optional
 Architecture: ${ARCH}
-Depends: libc, bash (>=4.0), qterminal, pnmixer, openbox, hicolor-icon-theme, xscreensaver, xdg-utils, openbox
+Depends: libc, bash (>=4.0), qterminal, pnmixer, openbox, hicolor-icon-theme, xscreensaver, xdg-utils, openbox, udisks2, upower
 Installed-Size: ${INSTALLED_SIZE}
 Maintainer: No Name <noname@gmail.com>
 Description: Draco is a simple and lightweight desktop environment.
