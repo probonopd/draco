@@ -15,12 +15,5 @@ script:
   - export CWD=`pwd`
   - mkdir $CWD/build-release
   - cd $CWD/build-release
-  - cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib64 -DCMAKE_INSTALL_LIBEXECDIR=bin -DCMAKE_BUILD_TYPE=Release ..
-  - make
-  - make DESTDIR=`pwd`/pkg install
-  - tree pkg
-  - mkdir $CWD/build-debug
-  - cd $CWD/build-debug
-  - cmake -DCMAKE_BUILD_TYPE=Debug ..
-  - make
-
+  - bash -ex ../src/build-deb.sh
+  - ls -lh
