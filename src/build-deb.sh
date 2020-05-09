@@ -43,6 +43,7 @@ sudo find debian/usr/lib -type f -exec strip {} \;
 
 sudo chmod +x debian/etc/X11/xinit/xinitrc.draco
 
+mkdir -p debian/usr/share/doc/${PROGRAMNAME}/
 echo "" | gzip -9 - -c -f > debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
 chmod 0644 debian/usr/share/doc/${PROGRAMNAME}/changelog.gz
 
