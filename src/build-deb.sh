@@ -47,6 +47,25 @@ find debian/usr/lib -type f -exec strip {} \;
 
 chmod +x debian/etc/X11/xinit/xinitrc.draco
 
+##########################################################################################
+# For a more complete out-of-the-box experience, also build and package QtFM
+##########################################################################################
+
+sudo apt-get -y install libqt5widgets5 libqt5gui5 libqt5concurrent5 libqt5dbus5 libqt5core5a ffmpeg imagemagick udisks2 hicolor-icon-theme adwaita-icon-theme libavdevice57 libswscale4 libavformat57 libavcodec57 libavutil55 libmagickwand-dev libmagickcore-dev libmagick++-dev tree cmake git build-essential qtbase5-dev qt5-qmake libmagick++-dev libavdevice-dev libswscale-dev libavformat-dev libavcodec-dev libavutil-dev autogen
+
+git clone https://github.com/rodlie/qtfm --depth 1
+cd qtfm
+
+mkdir build && cd build
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr  -DENABLE_MAGICK=false -DENABLE_FFMPEG=false -DCMAKE_BUILD_TYPE=Release ..
+make -j$(nproc)
+make DESTDIR=../../debian install
+
+cd ../..
+
+##########################################################################################
+
 INSTALLED_SIZE=$(du -s debian/usr | awk '{x=$1/1024; i=int(x); if ((x-i)*10 >= 5) {f=1} else {f=0}; print i+f}')
 echo "size=${INSTALLED_SIZE}"
 
