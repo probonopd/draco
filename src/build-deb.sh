@@ -51,7 +51,7 @@ chmod +x debian/etc/X11/xinit/xinitrc.draco
 # For a more complete out-of-the-box experience, also build and package QtFM
 ##########################################################################################
 
-sudo apt-get -y install libqt5widgets5 libqt5gui5 libqt5concurrent5 libqt5dbus5 libqt5core5a ffmpeg imagemagick udisks2 hicolor-icon-theme adwaita-icon-theme libavdevice57 libswscale4 libavformat57 libavcodec57 libavutil55 libmagickwand-dev libmagickcore-dev libmagick++-dev tree cmake git build-essential qtbase5-dev qt5-qmake libmagick++-dev libavdevice-dev libswscale-dev libavformat-dev libavcodec-dev libavutil-dev autogen
+sudo apt-get -y install libqt5widgets5 libqt5gui5 libqt5concurrent5 libqt5dbus5 libqt5core5a libmagickwand-dev libmagickcore-dev libmagick++-dev tree cmake git build-essential qtbase5-dev qt5-qmake libmagick++-dev libavdevice-dev libswscale-dev libavformat-dev libavcodec-dev libavutil-dev autogen
 
 git clone https://github.com/rodlie/qtfm --depth 1
 cd qtfm
